@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tech-challenger
+spec:
+  restartPolicy: Always 
+  containers:
+    - name: tech-challenger
+      image: jonatasalvesdev/tech-challenger:1.1
+      ports:
+        - containerPort: 80
+      env:
+        - name: ENVIRONMENT
+          value: "production"
