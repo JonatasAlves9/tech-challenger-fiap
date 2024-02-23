@@ -8,7 +8,21 @@ spec:
     - name: tech-challenger
       image: jonatasalvesdev/tech-challenger:1.6
       ports:
-        - containerPort: 80
+        - containerPort: 8000
       env:
         - name: ENVIRONMENT
           value: "production"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tech-challenger-service
+spec:
+  selector:
+    app: tech-challenger
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 831113000
+      nodePort: 
+  type: NodePort
