@@ -13,9 +13,9 @@ public class ProductUseCase : IProductUseCase
         _productRepository = productRepository;
     }
 
-    public IEnumerable<Product> GetAllProducts()
+    public IEnumerable<ListProductViewModel> GetAllProducts()
     {
-        return _productRepository.GetAll();
+        return ListProductViewModel.ToResult(_productRepository.GetAll());
     }
 
     public object CreateProduct(CreateProductViewModel product)
@@ -34,9 +34,9 @@ public class ProductUseCase : IProductUseCase
         return newProduct;
     }
 
-    public object UpdateProduct(UpdateProductViewModel product)
+    public async Task<UpdateProductViewModel> UpdateProductAsync(UpdateProductViewModel product)
     {
-        var existingProduct = _productRepository.GetByIdAsync(product.Id).Result;
+        var existingProduct = await _productRepository.GetByIdAsync(product.Id);
 
         if (existingProduct == null)
         {
@@ -54,7 +54,7 @@ public class ProductUseCase : IProductUseCase
 
         _productRepository.Update(existingProduct);
 
-        return product;
+        return UpdateProductViewModel.ToResult(existingProduct);
     }
 
     public void RemoveProduct(Guid id)
@@ -63,9 +63,8 @@ public class ProductUseCase : IProductUseCase
         _productRepository.Remove(product);
     }
 
-    public IEnumerable<Product> GetByCategory(Guid id)
+    public IEnumerable<ListProductViewModel> GetByCategory(Guid id)
     {
-        var products = _productRepository.GetByCategory(id);
-        return products;
+        return ListProductViewModel.ToResult(_productRepository.GetByCategory(id));
     }
 }

@@ -1,6 +1,7 @@
 using Application.UseCases;
 using Application.ViewModel;
 using Domain.Entities;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -22,7 +23,7 @@ namespace API.Controllers
         [Route("/")]
         public IActionResult Get()
         {
-            
+
             return Ok(_productUseCase.GetAllProducts());
         }
 
@@ -38,7 +39,7 @@ namespace API.Controllers
             {
                 _productUseCase.CreateProduct(productModel);
 
-                return Ok("Produto Criado com sucesso");
+                return Created();
             }
             catch (Exception ex)
             {
@@ -46,9 +47,9 @@ namespace API.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
-        
+
         [HttpPut]
-        public IActionResult UpdateProduct([FromBody] UpdateProductViewModel productModel)
+        public async Task<IActionResult> UpdateProduct([FromBody] UpdateProductViewModel productModel)
         {
             if (productModel == null)
             {
@@ -57,9 +58,8 @@ namespace API.Controllers
 
             try
             {
-                _productUseCase.UpdateProduct(productModel);
 
-                return Ok("Produto atualizado com sucesso");
+                return Ok(await _productUseCase.UpdateProductAsync(productModel));
             }
             catch (Exception ex)
             {

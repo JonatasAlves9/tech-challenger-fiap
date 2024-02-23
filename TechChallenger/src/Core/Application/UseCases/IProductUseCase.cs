@@ -5,10 +5,10 @@ namespace Application.UseCases
 {
     public interface IProductUseCase
     {
-        IEnumerable<Product> GetAllProducts();
+        IEnumerable<ListProductViewModel> GetAllProducts();
         object CreateProduct(CreateProductViewModel product);
-        object UpdateProduct(UpdateProductViewModel product);
+        Task<UpdateProductViewModel> UpdateProductAsync(UpdateProductViewModel product);
         void RemoveProduct(Guid id);
-        IEnumerable<Product> GetByCategory(Guid id);
+        IEnumerable<ListProductViewModel> GetByCategory(Guid id);
     }
 }
