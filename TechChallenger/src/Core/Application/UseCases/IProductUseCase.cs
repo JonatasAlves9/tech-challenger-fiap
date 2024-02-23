@@ -9,6 +9,6 @@ namespace Application.UseCases
         object CreateProduct(ProductDto product);
         object UpdateProduct(UpdateProductViewModel product);
         void RemoveProduct(Guid id);
-        IEnumerable<Product> GetByCategory(Guid id);
+        IEnumerable<ListProductViewModel> GetByCategory(Guid id);
     }
 }
