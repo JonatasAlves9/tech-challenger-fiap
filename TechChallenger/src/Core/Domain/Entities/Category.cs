@@ -10,4 +10,9 @@ public class Category : BaseEntity, IAggregateRoot
     }
 
     public string Name { get; private set; }
+
+    public static Category Create(string name)
+    {
+        return new Category(name);
+    }
 }

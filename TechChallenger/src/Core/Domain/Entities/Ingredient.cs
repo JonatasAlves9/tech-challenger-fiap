@@ -12,4 +12,8 @@ public class Ingredient : BaseEntity, IAggregateRoot
 
     public string Name { get; private set; }
     public double Price { get; private set; }
+    public static Ingredient Create(string name, double price)
+    {
+        return new Ingredient(name, price);
+    }
 }

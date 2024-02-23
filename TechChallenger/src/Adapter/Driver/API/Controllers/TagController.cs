@@ -1,3 +1,4 @@
+using Application.DTOs;
 using Application.UseCases;
 using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -25,7 +26,7 @@ namespace API.Controllers
         }
         
         [HttpPost]
-        public IActionResult CreateTag([FromBody] Tag tagModel)
+        public IActionResult CreateTag([FromBody] TagDto tagModel)
         {
             if (tagModel == null)
             {

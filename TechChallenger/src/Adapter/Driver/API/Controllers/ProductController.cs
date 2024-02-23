@@ -27,7 +27,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateProduct([FromBody] CreateProductViewModel productModel)
+        public IActionResult CreateProduct([FromBody] ProductDto productModel)
         {
             if (productModel == null)
             {

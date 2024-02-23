@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Application.DTOs;
+using Domain.Entities;
 using Domain.Repositories;
 
 namespace Application.UseCases;
@@ -17,9 +18,11 @@ public class TagUseCase : ITagUseCase
         return _tagRepository.GetAll();
     }
     
-    public void CreateTag(Tag tag)
+    public void CreateTag(TagDto tag)
     {
-        _tagRepository.Add(tag);
+        var model = Tag.Create(tag.Name, tag.ImageUrl);
+        
+        _tagRepository.Add(model);
     }
     
     public void UpdateTag(Tag tag)

@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Application.DTOs;
 
 namespace Application.UseCases
 {
     public interface ICategoryUseCase
     {
         IEnumerable<Category> GetAllCategories();
-        void CreateCategory(Category category);
-        void UpdateCategory(Category category);
+        void CreateCategory(CategoryDto category);
+        Task UpdateCategory(Category category);
         void RemoveCategory(Guid id);
     }
 }

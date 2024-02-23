@@ -1,3 +1,4 @@
+using Application.DTOs;
 using Application.UseCases;
 using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -12,10 +13,10 @@ namespace API.Controllers
         private readonly ILogger<CategoriesController> _logger;
         private readonly ICategoryUseCase _categoryUseCase;
 
-        public CategoriesController(ILogger<CategoriesController> logger, ICategoryUseCase CategoryUseCase)
+        public CategoriesController(ILogger<CategoriesController> logger, ICategoryUseCase categoryUseCase)
         {
             _logger = logger;
-            _categoryUseCase = CategoryUseCase;
+            _categoryUseCase = categoryUseCase;
         }
 
         /// <summary>
@@ -43,7 +44,7 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(string))]
-        public IActionResult CreateCategory([FromBody] Category model)
+        public IActionResult CreateCategory([FromBody] CategoryDto? model)
         {
             if (model == null)
             {
@@ -54,7 +55,7 @@ namespace API.Controllers
             {
                 _categoryUseCase.CreateCategory(model);
 
-                return Ok("Categoria foi criada com sucesso");
+                return Ok("Category created successfully.");
             }
             catch (Exception ex)
             {
@@ -75,7 +76,7 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(string))]
-        public IActionResult UpdateCategory([FromBody] Category model)
+        public IActionResult UpdateCategory([FromBody] Category? model)
         {
             if (model == null)
             {
@@ -86,7 +87,7 @@ namespace API.Controllers
             {
                 _categoryUseCase.UpdateCategory(model);
 
-                return Ok("Categoria foi criada com sucesso");
+                return Ok("Category updated successfully.");
             }
             catch (Exception ex)
             {
@@ -110,7 +111,7 @@ namespace API.Controllers
             {
                 _categoryUseCase.RemoveCategory(id);
 
-                return Ok("Categoria foi removida com sucesso!");
+                return Ok("Category removed successfully.");
             }
             catch (Exception ex)
             {

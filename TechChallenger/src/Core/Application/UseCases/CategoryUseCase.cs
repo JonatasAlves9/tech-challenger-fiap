@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Application.DTOs;
+using Domain.Entities;
 using Domain.Repositories;
 
 namespace Application.UseCases;
@@ -7,20 +8,22 @@ public class CategoryUseCase : ICategoryUseCase
 {
     private readonly ICategoryRepository _categoryRepository;
 
-    public CategoryUseCase(ICategoryRepository CategoryRepository)
+    public CategoryUseCase(ICategoryRepository categoryRepository)
     {
-        _categoryRepository = CategoryRepository;
+        _categoryRepository = categoryRepository;
     }
 
     public IEnumerable<Category> GetAllCategories()
     {
         return _categoryRepository.GetAll();
     }
-    public void CreateCategory(Category category)
+    public void CreateCategory(CategoryDto category)
     {
-        _categoryRepository.Add(category);
+        var model = Category.Create(category.Name);
+    
+        _categoryRepository.Add(model);
     }
-    public void UpdateCategory(Category category)
+    public async Task UpdateCategory(Category category)
     {
         _categoryRepository.Update(category);
     }

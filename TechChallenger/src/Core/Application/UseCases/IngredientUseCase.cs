@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Application.DTOs;
+using Domain.Entities;
 using Domain.Repositories;
 
 namespace Application.UseCases;
@@ -16,8 +17,10 @@ public class IngredientUseCase : IIngredientUseCase
     {
         return _ingredientRepository.GetAll();
     }
-    public void CreateIngredient(Ingredient model)
+    public void CreateIngredient(IngredientDto ingredient)
     {
+        var model = Ingredient.Create(ingredient.Name, ingredient.Price);
+        
         _ingredientRepository.Add(model);
     }
 
