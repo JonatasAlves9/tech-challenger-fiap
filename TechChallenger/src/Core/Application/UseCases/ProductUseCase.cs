@@ -18,20 +18,20 @@ public class ProductUseCase : IProductUseCase
         return ListProductViewModel.ToResult(_productRepository.GetAll());
     }
 
-    public object CreateProduct(CreateProductViewModel product)
+    public ProductViewModel CreateProduct(CreateProductViewModel product)
     {
-        var newProduct = Product.CreateProduct(
-            product.Name,
-            product.CategoryId,
-            product.Price,
-            product.Description,
-            product.ImageUrl,
-            product.Estimative
-        );
+        var newProduct = Product.CreateProduct();
+        newProduct
+            .SetName(product.Name)
+            .SetCategoryId(product.CategoryId)
+            .SetPrice(product.Price)
+            .SetDescription(product.Description)
+            .SetImageUrl(product.ImageUrl)
+            .SetEstimative(product.Estimative);
 
         _productRepository.Add(newProduct);
 
-        return newProduct;
+        return ProductViewModel.ToResult(newProduct);
     }
 
     public async Task<UpdateProductViewModel> UpdateProductAsync(UpdateProductViewModel product)
@@ -43,14 +43,13 @@ public class ProductUseCase : IProductUseCase
             throw new InvalidOperationException("Produto não encontrado com o ID fornecido.");
         }
 
-        existingProduct.UpdateProduct(
-            product.Name,
-            product.CategoryId,
-            product.Price,
-            product.Description,
-            product.ImageUrl,
-            product.Estimative
-        );
+        existingProduct
+            .SetName(product.Name)
+            .SetCategoryId(product.CategoryId)
+            .SetPrice(product.Price)
+            .SetDescription(product.Description)
+            .SetImageUrl(product.ImageUrl)
+            .SetEstimative(product.Estimative);
 
         _productRepository.Update(existingProduct);
 
