@@ -6,9 +6,9 @@ spec:
   restartPolicy: Always
   containers:
     - name: tech-challenger
-      image: jonatasalvesdev/tech-challenger:1.6
+      image: jonatasalvesdev/tech-challenger:2.1
       ports:
-        - containerPort: 8000
+        - containerPort: 8080
       env:
         - name: ENVIRONMENT
           value: "production"
@@ -22,7 +22,6 @@ spec:
     app: tech-challenger
   ports:
     - protocol: TCP
-      port: 8000
-      targetPort: 31113
-      nodePort: 
-  type: NodePort
+      port: 8080
+      targetPort: 8000
+  type: LoadBalancer
