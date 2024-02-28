@@ -1,4 +1,5 @@
 ﻿using Application.DTOs;
+using Application.ViewModel;
 using Domain.Entities;
 using Domain.Repositories;
 
@@ -13,19 +14,31 @@ public class CategoryUseCase : ICategoryUseCase
         _categoryRepository = categoryRepository;
     }
 
-    public IEnumerable<Category> GetAllCategories()
+    public IEnumerable<CategoryViewModel> GetAllCategories()
     {
-        return _categoryRepository.GetAll();
+        return CategoryViewModel.List(_categoryRepository.GetAll());
     }
-    public void CreateCategory(CategoryDto category)
+    public CategoryViewModel CreateCategory(CategoryDto.CreateCategory category)
     {
-        var model = Category.Create(category.Name);
+        var newCategory = Category.Create();
+
+        newCategory
+            .SetName(category.Name);
     
-        _categoryRepository.Add(model);
+        _categoryRepository.Add(newCategory);
+
+        return CategoryViewModel.ToResult(newCategory);
     }
-    public async Task UpdateCategory(Category category)
+    public async Task<CategoryViewModel> UpdateCategory(CategoryDto.UpdateCategory category)
     {
-        _categoryRepository.Update(category);
+        var newCategory = Category.Create();
+
+        newCategory
+            .SetName(category.Name);
+        
+        _categoryRepository.Add(newCategory);
+
+        return CategoryViewModel.ToResult(newCategory);
     }
     public void RemoveCategory(Guid id)
     {

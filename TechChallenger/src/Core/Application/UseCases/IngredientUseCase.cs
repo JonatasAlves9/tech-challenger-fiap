@@ -1,4 +1,5 @@
 ﻿using Application.DTOs;
+using Application.ViewModel;
 using Domain.Entities;
 using Domain.Repositories;
 
@@ -13,20 +14,39 @@ public class IngredientUseCase : IIngredientUseCase
         _ingredientRepository = ingredientRepository;
     }
 
-    public IEnumerable<Ingredient> GetAllIngredients()
+    public IEnumerable<IngredientViewModel> GetAllIngredients()
     {
-        return _ingredientRepository.GetAll();
+        return IngredientViewModel.List(_ingredientRepository.GetAll());
     }
-    public void CreateIngredient(IngredientDto ingredient)
+    public IngredientViewModel CreateIngredient(IngredientDto.CreateIngredient ingredient)
     {
-        var model = Ingredient.Create(ingredient.Name, ingredient.Price);
+        var newIngredient = Ingredient.Create();
+
+        newIngredient
+            .SetName(ingredient.Name)
+            .SetPrice(ingredient.Price);
         
-        _ingredientRepository.Add(model);
+        _ingredientRepository.Add(newIngredient);
+
+        return IngredientViewModel.ToResult(newIngredient);
     }
 
-    public void UpdateIngredient(Ingredient model)
+    public async Task<IngredientViewModel> UpdateIngredientAsync(IngredientDto.UpdateIngredient ingredient)
     {
-        _ingredientRepository.Update(model);
+        var existingIngredient = await _ingredientRepository.GetByIdAsync(ingredient.Id);
+
+        if (existingIngredient == null)
+        {
+            throw new InvalidOperationException("Ingredient not found with the ID provided.");
+        }
+
+        existingIngredient
+            .SetName(ingredient.Name)
+            .SetPrice(ingredient.Price);
+
+        _ingredientRepository.Update(existingIngredient);
+
+        return IngredientViewModel.ToResult(existingIngredient);
     }
 
     public void RemoveIngredient(Guid id)

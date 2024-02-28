@@ -28,7 +28,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateProduct([FromBody] ProductDto productModel)
+        public IActionResult CreateProduct([FromBody] ProductDto.CreateProduct productModel)
         {
             if (productModel == null)
             {
@@ -37,9 +37,9 @@ namespace API.Controllers
 
             try
             {
-                _productUseCase.CreateProduct(productModel);
+                var viewModel = _productUseCase.CreateProduct(productModel);
 
-                return Created();
+                return Ok(viewModel);
             }
             catch (Exception ex)
             {
@@ -49,7 +49,7 @@ namespace API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateProduct([FromBody] UpdateProductViewModel productModel)
+        public async Task<IActionResult> UpdateProduct([FromBody] ProductDto.UpdateProduct productModel)
         {
             if (productModel == null)
             {
@@ -58,8 +58,9 @@ namespace API.Controllers
 
             try
             {
-
-                return Ok(await _productUseCase.UpdateProductAsync(productModel));
+                var model = await _productUseCase.UpdateProductAsync(productModel);
+                
+                return Ok(model);
             }
             catch (Exception ex)
             {
@@ -80,7 +81,7 @@ namespace API.Controllers
             {
                 _productUseCase.RemoveProduct(id);
 
-                return Ok("Produto removida com sucesso");
+                return Ok("Product removed successfully!");
             }
             catch (Exception ex)
             {

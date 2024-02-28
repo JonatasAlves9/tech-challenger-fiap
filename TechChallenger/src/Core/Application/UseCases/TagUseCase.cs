@@ -1,4 +1,5 @@
 ﻿using Application.DTOs;
+using Application.ViewModel;
 using Domain.Entities;
 using Domain.Repositories;
 
@@ -13,21 +14,41 @@ public class TagUseCase : ITagUseCase
         _tagRepository = tagRepository;
     }
 
-    public IEnumerable<Tag> GetAllTags()
+    public IEnumerable<TagViewModel> GetAllTags()
     {
-        return _tagRepository.GetAll();
+        var tags = _tagRepository.GetAll(); 
+        return TagViewModel.List(tags);
     }
     
-    public void CreateTag(TagDto tag)
+    public TagViewModel CreateTag(TagDto.CreateTag tag)
     {
-        var model = Tag.Create(tag.Name, tag.ImageUrl);
+        var newTag = Tag.Create();
+
+        newTag
+            .SetName(tag.Name)
+            .SetImageUrl(tag.ImageUrl);
         
-        _tagRepository.Add(model);
+        _tagRepository.Add(newTag);
+
+        return TagViewModel.ToResult(newTag);
     }
     
-    public void UpdateTag(Tag tag)
+    public async Task<TagViewModel> UpdateTag(TagDto.UpdateTag tag)
     {
-        _tagRepository.Update(tag);
+        var existingTag = await _tagRepository.GetByIdAsync(tag.Id);
+
+        if (existingTag == null)
+        {
+            throw new InvalidOperationException("Tag not found with the ID provided.");
+        }
+
+        existingTag
+            .SetName(tag.Name)
+            .SetImageUrl(tag.ImageUrl);
+
+        _tagRepository.Update(existingTag);
+
+        return TagViewModel.ToResult(existingTag);
     }
     
     public void RemoveTag(Guid id)

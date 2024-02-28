@@ -32,7 +32,7 @@ namespace API.Controllers
             return Ok(_ingredientUseCase.GetAllIngredients());
         }
         [HttpPost]
-        public IActionResult CreateIngredient([FromBody] IngredientDto model)
+        public IActionResult CreateIngredient([FromBody] IngredientDto.CreateIngredient model)
         {
             if (model == null)
             {
@@ -41,9 +41,9 @@ namespace API.Controllers
 
             try
             {
-                _ingredientUseCase.CreateIngredient(model);
+                var viewModel = _ingredientUseCase.CreateIngredient(model);
 
-                return Ok("Ingredient created successfully.");
+                return Ok(viewModel);
             }
             catch (Exception ex)
             {
@@ -53,7 +53,7 @@ namespace API.Controllers
         }
         
         [HttpPut]
-        public IActionResult UpdateIngredient([FromBody] Ingredient model)
+        public async Task<IActionResult> UpdateIngredient([FromBody] IngredientDto.UpdateIngredient model)
         {
             if (model == null)
             {
@@ -62,9 +62,9 @@ namespace API.Controllers
 
             try
             {
-                _ingredientUseCase.UpdateIngredient(model);
+                var viewModel = await _ingredientUseCase.UpdateIngredientAsync(model);
 
-                return Ok("Ingredient updated successfully");
+                return Ok(viewModel);
             }
             catch (Exception ex)
             {

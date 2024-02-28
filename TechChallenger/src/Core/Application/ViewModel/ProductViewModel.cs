@@ -23,6 +23,17 @@ namespace Application.ViewModel
                 ImageUrl = product.ImageUrl,
                 Estimative = product.Estimative,
             };
+        
+        public static List<ProductViewModel> List(IEnumerable<Product> products)
+            => products.Select(product => new ProductViewModel()
+            {
+                Name = product.Name,
+                CategoryId = product.CategoryId,
+                Price = product.Price,
+                Description = product.Description,
+                ImageUrl = product.ImageUrl,
+                Estimative = product.Estimative,
+            }).ToList();
 
     }
 }

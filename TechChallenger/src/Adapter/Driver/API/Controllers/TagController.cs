@@ -1,6 +1,5 @@
 using Application.DTOs;
 using Application.UseCases;
-using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -26,7 +25,7 @@ namespace API.Controllers
         }
         
         [HttpPost]
-        public IActionResult CreateTag([FromBody] TagDto tagModel)
+        public IActionResult CreateTag([FromBody] TagDto.CreateTag tagModel)
         {
             if (tagModel == null)
             {
@@ -35,9 +34,30 @@ namespace API.Controllers
 
             try
             {
-                _tagUseCase.CreateTag(tagModel);
+                var viewModel = _tagUseCase.CreateTag(tagModel);
 
-                return Ok("Tag Criada com sucesso");
+                return Ok(viewModel);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error creating tag: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+        
+        [HttpPut]
+        public async Task<IActionResult> UpdateTag([FromBody] TagDto.UpdateTag tagModel)
+        {
+            if (tagModel == null)
+            {
+                return BadRequest("Invalid tag data");
+            }
+
+            try
+            {
+                var viewModel = await _tagUseCase.UpdateTag(tagModel);
+                
+                return Ok(viewModel);
             }
             catch (Exception ex)
             {
@@ -58,7 +78,7 @@ namespace API.Controllers
             {
                 _tagUseCase.RemoveTag(id);
 
-                return Ok("Tag removida com sucesso");
+                return Ok("Tag removed successfully.");
             }
             catch (Exception ex)
             {
@@ -66,27 +86,5 @@ namespace API.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
-        
-        [HttpPut]
-        public IActionResult UpdateIngredient([FromBody] Tag model)
-        {
-            if (model == null)
-            {
-                return BadRequest("Invalid tag data");
-            }
-
-            try
-            {
-                _tagUseCase.UpdateTag(model);
-                
-                return Ok("Tag foi criada com sucesso");
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Error creating tag: {ex.Message}");
-                return StatusCode(500, "Internal server error");
-            }
-        }
-        
     }
 }
