@@ -1,18 +1,59 @@
-apiVersion: v1
-kind: Pod
+#apiVersion: v1
+#kind: Pod
+#metadata:
+#  name: tech-challenger
+#spec:
+#  restartPolicy: Always
+#  containers:
+#    - name: tech-challenger
+#      image: jonatasalvesdev/tech-challenger:2.3
+#      ports:
+#        - containerPort: 8080
+#      env:
+#        - name: ENVIRONMENT
+#          value: "development"
+#---
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: tech-challenger-loadbalancer
+#spec:
+#  selector:
+#    app: tech-challenger
+#  ports:
+#    - port: 80
+#      protocol: TCP
+#      targetPort: 8080
+#  type: LoadBalancer
+
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: tech-challenger
+  name: tech-challenger-deployment
+  labels:
+    app: tech-challenger
 spec:
-  restartPolicy: Always
-  containers:
-    - name: tech-challenger
-      image: jonatasalvesdev/tech-challenger:2.1
-      ports:
-        - containerPort: 8080
-      env:
-        - name: ENVIRONMENT
-          value: "production"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tech-challenger
+  template:
+    metadata:
+      labels:
+        app: tech-challenger
+    spec:
+      containers:
+        - name: tech-challenger
+          image: jonatasalvesdev/tech-challenger:2.6
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ENVIRONMENT
+              value: "development"
+
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -23,5 +64,48 @@ spec:
   ports:
     - protocol: TCP
       port: 8080
-      targetPort: 8000
+      targetPort: 8080
+  type: LoadBalancer
+
+---
+#Teste 2
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tech-challenger-deployment-2
+  labels:
+    app: tech-challenger-2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tech-challenger-2
+  template:
+    metadata:
+      labels:
+        app: tech-challenger-2
+    spec:
+      containers:
+        - name: tech-challenger-2
+          image: jonatasalvesdev/tech-challenger:2.6
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ENVIRONMENT
+              value: "development"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: tech-challenger-service-2
+spec:
+  selector:
+    app: tech-challenger-2
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
   type: LoadBalancer
