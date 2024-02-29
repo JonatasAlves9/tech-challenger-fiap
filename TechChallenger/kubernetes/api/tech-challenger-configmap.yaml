@@ -1,7 +1,7 @@
 apiVersion: v1
 kink: ConfigMap
 metadata:
-  name: tech-challenger
+  name: tech-challenger-config
 data:
   appsettings.json: |-
     {

@@ -23,6 +23,11 @@ spec:
           env:
             - name: ENVIRONMENT
               value: "development"
+            - name: APP_SETTINGS
+              valueFrom:
+                configMapKeyRef
+                  name: tech-challenger-config
+                  key: appsettings.json
 
 ---
 
