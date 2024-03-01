@@ -4,9 +4,6 @@ namespace Application.ViewModel;
 
 public class CategoryViewModel
 {
-    /// <summary>
-    /// Identificador da categoria
-    /// </summary>
     public Guid? Id { get; set; }
     public string Name { get; private set; }
     
