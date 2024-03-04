@@ -5,12 +5,6 @@ namespace Domain.Entities;
 
 public class ProductsIngredients : BaseEntity, IAggregateRoot
 {
-    public ProductsIngredients(Guid productId, Guid ingredientId)
-    {
-        ProductId = productId;
-        IngredientId = ingredientId;
-    }
-
     [ForeignKey("Product")]
     public Guid ProductId { get; private set; }
     [ForeignKey("Ingredient")]

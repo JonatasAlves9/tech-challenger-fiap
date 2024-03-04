@@ -25,7 +25,7 @@ namespace Application.UseCases
             return _orderRepository.GetAll();
         }
 
-        public object Post(CreateOrderViewModel data)
+        public object Post(OrderViewModel data)
         {
             try
             {

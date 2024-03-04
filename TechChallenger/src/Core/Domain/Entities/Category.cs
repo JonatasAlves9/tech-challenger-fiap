@@ -4,10 +4,16 @@ namespace Domain.Entities;
 
 public class Category : BaseEntity, IAggregateRoot
 {
-    public Category(string name)
+    public string Name { get; private set; }
+
+    public static Category Create()
     {
-        Name = name;
+        return new Category();
     }
 
-    public string Name { get; private set; }
+    public Category SetName(string name)
+    {
+        Name = name;
+        return this;
+    }
 }

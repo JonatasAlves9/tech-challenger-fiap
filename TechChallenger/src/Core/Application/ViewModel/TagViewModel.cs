@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.ViewModel
 {
-    internal class TagViewModel
+    public class TagViewModel
     {
         public Guid Id { get; private set; }
         public string Name { get; private set; }
@@ -20,5 +20,13 @@ namespace Application.ViewModel
                 Name = tag.Name,
                 ImageUrl = tag.ImageUrl,
             };
+
+        public static List<TagViewModel> List(IEnumerable<Tag> tags)
+       => tags.Select(tag => new TagViewModel()
+       {
+           Id = tag.Id,
+           Name = tag.Name,
+           ImageUrl = tag.ImageUrl
+       }).ToList();
     }
 }

@@ -1,10 +1,8 @@
 using System.Reflection;
 using Application.UseCases;
 using Domain.Repositories;
-using HealthChecks.UI.Client;
 using Infra.Context;
 using Infra.Repositories;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -44,6 +42,7 @@ builder.Services.AddTransient<IProductUseCase, ProductUseCase>();
 
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 builder.Services.AddTransient<ICategoryUseCase, CategoryUseCase>();
+
 
 var app = builder.Build();
 

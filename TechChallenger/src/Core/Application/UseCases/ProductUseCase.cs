@@ -13,12 +13,12 @@ public class ProductUseCase : IProductUseCase
         _productRepository = productRepository;
     }
 
-    public IEnumerable<ListProductViewModel> GetAllProducts()
+    public IEnumerable<ProductViewModel> GetAllProducts()
     {
-        return ListProductViewModel.ToResult(_productRepository.GetAll());
+        return ProductViewModel.List(_productRepository.GetAll());
     }
 
-    public ProductViewModel CreateProduct(CreateProductViewModel product)
+    public ProductViewModel CreateProduct(ProductDto.CreateProduct product)
     {
         var newProduct = Product.CreateProduct();
         newProduct
@@ -34,13 +34,13 @@ public class ProductUseCase : IProductUseCase
         return ProductViewModel.ToResult(newProduct);
     }
 
-    public async Task<UpdateProductViewModel> UpdateProductAsync(UpdateProductViewModel product)
+    public async Task<ProductViewModel> UpdateProductAsync(ProductDto.UpdateProduct product)
     {
         var existingProduct = await _productRepository.GetByIdAsync(product.Id);
 
         if (existingProduct == null)
         {
-            throw new InvalidOperationException("Produto não encontrado com o ID fornecido.");
+            throw new InvalidOperationException("Product not found with the ID provided.");
         }
 
         existingProduct
@@ -53,7 +53,7 @@ public class ProductUseCase : IProductUseCase
 
         _productRepository.Update(existingProduct);
 
-        return UpdateProductViewModel.ToResult(existingProduct);
+        return ProductViewModel.ToResult(existingProduct);
     }
 
     public void RemoveProduct(Guid id)
@@ -62,8 +62,8 @@ public class ProductUseCase : IProductUseCase
         _productRepository.Remove(product);
     }
 
-    public IEnumerable<ListProductViewModel> GetByCategory(Guid id)
+    public IEnumerable<ProductViewModel> GetByCategory(Guid id)
     {
-        return ListProductViewModel.ToResult(_productRepository.GetByCategory(id));
+        return ProductViewModel.List(_productRepository.GetByCategory(id));
     }
 }
