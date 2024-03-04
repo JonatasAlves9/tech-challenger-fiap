@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Application.ViewModel;
+using Domain.Entities;
 using Domain.Repositories;
 
 namespace Application.UseCases;
