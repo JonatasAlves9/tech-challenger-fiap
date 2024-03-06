@@ -2,17 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: tech-challenger-deployment
+  annotations: 
+    kubernetes.io/change-cause: "Initial deployment."
   labels:
     app: tech-challenger
 spec:
-  replicas: 1
+  replicas: 5
   selector:
     matchLabels:
       app: tech-challenger
   template:
     metadata:
+      name: techchallengerk8s
       labels:
+        env: prod
         app: tech-challenger
+        app.kubernetes.io/name: tech-challenger
     spec:
       containers:
         - name: tech-challenger
@@ -20,17 +25,18 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
+          resourcer:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: 200m
+              memory: 200Mi
           env:
             - name: ENVIRONMENT
               value: "development"
-            - name: APP_SETTINGS
-              valueFrom:
-                configMapKeyRef
-                  name: tech-challenger-config
-                  key: appsettings.json
-
 ---
-
+# Service
 apiVersion: v1
 kind: Service
 metadata:
