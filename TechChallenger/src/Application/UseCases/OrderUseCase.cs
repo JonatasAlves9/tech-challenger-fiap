@@ -56,7 +56,11 @@ namespace Application.UseCases
                     _ordersIngredientsRepository.AddRange(ordersIngredients);
                 }
 
-                return order;
+                return new
+                {
+                    message = "Pedido realizado com sucesso",
+                    order_number = order.Id
+                };
             }
             catch (Exception)
             {
