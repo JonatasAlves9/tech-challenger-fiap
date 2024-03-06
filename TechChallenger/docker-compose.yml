@@ -6,7 +6,7 @@ networks:
 
 services:
   dockerapi:
-    image: api:latest
+    image: tech-challenger:latest
     depends_on:
       - "postgres_image"
     build:

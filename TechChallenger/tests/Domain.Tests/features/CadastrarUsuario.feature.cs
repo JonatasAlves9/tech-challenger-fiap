@@ -39,8 +39,8 @@ namespace Domain.Tests.Features
         public static async System.Threading.Tasks.Task FeatureSetupAsync()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunnerForAssembly(null, TechTalk.SpecFlow.xUnit.SpecFlowPlugin.XUnitParallelWorkerTracker.Instance.GetWorkerId());
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("pt-BR"), "features", "Cadastro de Usuário", "Como um novo usuário\r\nEu quero me cadastrar no sistema\r\nPara poder acessar os rec" +
-                    "ursos exclusivos", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("pt-BR"), "features", "Cadastro de Usuário", "Como um novo usuário\nEu quero me cadastrar no sistema\nPara poder acessar os recur" +
+                    "sos exclusivos", ProgrammingLanguage.CSharp, featureTags);
             await testRunner.OnFeatureStartAsync(featureInfo);
         }
         
