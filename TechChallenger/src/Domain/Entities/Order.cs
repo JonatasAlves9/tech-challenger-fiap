@@ -26,15 +26,15 @@ public class Order : BaseEntity, IAggregateRoot
         return new Order(customerId, discount,  status);
     }
 
-    public static void AddProduct(Order order, Product product, int quantity)
-    {
-        order.Products.Add(new OrdersProducts(order.Id, product.Id, quantity));
-    }
+    // public static void AddProduct(Order order, Product product, int quantity)
+    // {
+    //     order.Products.Add(new OrdersProducts(order.Id, product.Id, quantity));
+    // }
 
-    public static void AddIngredient(Order order, Ingredient ingredient, int quantity, Product product)
-    {
-        order.Ingredients.Add(new OrdersIngredients(ingredient.Id, order.Id, product.Id, quantity));
-    }
+    // public static void AddIngredient(Order order, Ingredient ingredient, int quantity, Product product)
+    // {
+    //     order.Ingredients.Add(new OrdersIngredients(ingredient.Id, order.Id, product.Id, quantity));
+    // }
 
     public void MoveToNextStep()
     {
