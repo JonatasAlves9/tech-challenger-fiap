@@ -19,6 +19,7 @@ public class Order : BaseEntity, IAggregateRoot
     public Guid CustomerId { get; private set; }
     public double Discount { get; private set; }
     public OrderStatus Status { get; private set; }
+    public bool IsPaid { get; private set; } = false;
 
     // Methods
     public static Order CreateOrder(Guid customerId, double discount, OrderStatus status)

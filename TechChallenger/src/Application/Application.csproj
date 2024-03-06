@@ -9,7 +9,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Domain\Domain.csproj" />
-      <ProjectReference Include="..\Infra\Infra.csproj" />
     </ItemGroup>
 
 </Project>

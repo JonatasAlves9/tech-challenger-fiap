@@ -5,6 +5,7 @@ using Domain.Repositories;
 namespace Application.UseCases
 {
     public class OrderUseCase : IOrderUseCase
+
     {
         private readonly IOrderRepository _orderRepository;
         private readonly IOrdersProductsRepository _ordersProductsRepository;
@@ -63,6 +64,21 @@ namespace Application.UseCases
             }
         }
 
+        public bool IsPaid(Guid orderId)
+        {
+            try
+            {
+                var order = _orderRepository.GetByIdAsync(orderId).Result;
+
+                if (order.Status != Domain.Enums.OrderStatus.Received) return false;
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
         public bool NextStep(Guid orderId)
         {
             try

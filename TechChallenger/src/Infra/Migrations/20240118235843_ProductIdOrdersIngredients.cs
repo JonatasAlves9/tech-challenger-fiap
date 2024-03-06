@@ -24,6 +24,13 @@ namespace Infra.Migrations
                 type: "integer",
                 nullable: false,
                 defaultValue: 0);
+            
+            migrationBuilder.AddColumn<int>(
+                name: "IsPaid",
+                table: "Orders",
+                type: "boolean",
+                nullable: false,
+                defaultValue: false);
         }
 
         /// <inheritdoc />
@@ -35,6 +42,10 @@ namespace Infra.Migrations
 
             migrationBuilder.DropColumn(
                 name: "Number",
+                table: "Orders");
+            
+            migrationBuilder.DropColumn(
+                name: "IsPaid",
                 table: "Orders");
         }
     }

@@ -9,5 +9,6 @@ namespace Application.UseCases
         object Post(CreateOrderViewModel data);
         bool NextStep(Guid orderId);
         IEnumerable<Order> GetQueue();
+        bool IsPaid(Guid orderId);
     }
 }
