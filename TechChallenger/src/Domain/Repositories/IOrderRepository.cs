@@ -6,5 +6,6 @@ namespace Domain.Repositories
     public interface IOrderRepository : IAsyncRepository<Order>
     {
         IEnumerable<Order> GetQueue();
+        object GetOrdersByStatus();
     }
 }

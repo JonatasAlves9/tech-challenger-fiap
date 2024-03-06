@@ -80,6 +80,23 @@ namespace API.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
+        
+        [HttpGet]
+        [Route("GetOrdersByStatus")]
+        public IActionResult GetOrdersByStatus()
+        {
+            try
+            {
+                var result = _orderUseCase.GetOrdersByStatus();
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error get orders by status: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
 
         [HttpGet]
         [Route("GetQueue")]

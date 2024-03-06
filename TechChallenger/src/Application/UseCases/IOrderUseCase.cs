@@ -10,5 +10,6 @@ namespace Application.UseCases
         bool NextStep(Guid orderId);
         IEnumerable<Order> GetQueue();
         bool IsPaid(Guid orderId);
+        object GetOrdersByStatus();
     }
 }

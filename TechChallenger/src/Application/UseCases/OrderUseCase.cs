@@ -109,5 +109,12 @@ namespace Application.UseCases
 
             return orders;
         }
+        
+        public object GetOrdersByStatus()
+        {
+            var orders = _orderRepository.GetOrdersByStatus();
+
+            return orders;
+        }
     }
 }
