@@ -20,12 +20,6 @@ public class Order : BaseEntity, IAggregateRoot
     public double Discount { get; private set; }
     public OrderStatus Status { get; private set; }
 
-    #region Virtual
-    public virtual List<OrdersProducts> Products { get; set; }
-    public virtual List<OrdersIngredients> Ingredients { get; set; }
-
-    #endregion
-
     // Methods
     public static Order CreateOrder(Guid customerId, double discount, OrderStatus status)
     {
