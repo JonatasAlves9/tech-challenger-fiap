@@ -15,6 +15,7 @@ public class OrdersIngredients : BaseEntity, IAggregateRoot
 
     [ForeignKey("Ingredient")]
     public Guid IngredientId { get; private set; }
+
     [ForeignKey("Order")]
     public Guid OrderId { get; private set; }
 

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # 
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Tests", "tests\Domain.Tests\Domain.Tests.csproj", "{F20D48ED-7296-4036-88DA-A00EEEB23A98}"
+Project("{dddcFAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Tests", "tests\Domain.Tests\Domain.Tests.csproj", "{F20D48ED-7296-4036-88DA-A00EEEB23A98}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{26044AB1-FDF0-4F38-90E4-FDEC7E3877F6}"
 EndProject

@@ -18,7 +18,6 @@ public class OrdersProducts : BaseEntity, IAggregateRoot
     public Guid ProductId { get; private set; }
     public int Quantity { get; private set; }
 
-
     public static OrdersProducts CreateOrdersProducts(Guid orderId, Guid productId, int quantity)
     {
         return new OrdersProducts(orderId, productId, quantity);

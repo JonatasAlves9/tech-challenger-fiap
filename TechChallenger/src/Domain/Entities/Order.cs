@@ -20,9 +20,26 @@ public class Order : BaseEntity, IAggregateRoot
     public double Discount { get; private set; }
     public OrderStatus Status { get; private set; }
 
+    #region Virtual
+    public virtual List<OrdersProducts> Products { get; set; }
+    public virtual List<OrdersIngredients> Ingredients { get; set; }
+
+    #endregion
+
+    // Methods
     public static Order CreateOrder(Guid customerId, double discount, OrderStatus status)
     {
         return new Order(customerId, discount,  status);
+    }
+
+    public static void AddProduct(Order order, Product product, int quantity)
+    {
+        order.Products.Add(new OrdersProducts(order.Id, product.Id, quantity));
+    }
+
+    public static void AddIngredient(Order order, Ingredient ingredient, int quantity, Product product)
+    {
+        order.Ingredients.Add(new OrdersIngredients(ingredient.Id, order.Id, product.Id, quantity));
     }
 
     public void MoveToNextStep()
