@@ -61,6 +61,25 @@ namespace API.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
+        
+        [HttpGet]
+        [Route("GetStatusPayment")]
+        public IActionResult GetStatusPayment([FromQuery] Guid orderId)
+        {
+            if (orderId == Guid.Empty) return BadRequest("Invalid order data");
+
+            try
+            {
+                var result = _orderUseCase.IsPaid(orderId);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error get status payment: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
 
         [HttpGet]
         [Route("GetQueue")]

@@ -70,9 +70,9 @@ namespace Application.UseCases
             {
                 var order = _orderRepository.GetByIdAsync(orderId).Result;
 
-                if (order.Status != Domain.Enums.OrderStatus.Received) return false;
+                if (order.IsPaid) return true;
 
-                return true;
+                return false;
             }
             catch (Exception)
             {
