@@ -22,6 +22,12 @@ public class Order : BaseEntity, IAggregateRoot
     public bool IsPaid { get; private set; } = false;
 
     // Methods
+    
+    public void MarkAsPaid()
+    {
+        IsPaid = true;
+    }
+    
     public static Order CreateOrder(Guid customerId, double discount, OrderStatus status)
     {
         return new Order(customerId, discount,  status);
