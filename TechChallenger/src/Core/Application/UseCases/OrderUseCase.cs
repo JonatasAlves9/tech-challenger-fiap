@@ -19,11 +19,8 @@ namespace Application.UseCases
             _productsIngredientsRepository = productsIngredientsRepository;
         }   
 
-
-        public IEnumerable<Order> GetAllOrder()
-        {
-            return _orderRepository.GetAll();
-        }
+        public IEnumerable<OrderViewModel> GetAllOrder()
+         => OrderViewModel.ToResultList(_orderRepository.GetAll());
 
         public OrderViewModel Post(OrderViewModel data)
         {
@@ -69,7 +66,7 @@ namespace Application.UseCases
             {
                 var order = _orderRepository.GetByIdAsync(orderId).Result;
 
-                if (order.Status == Domain.Enums.OrderStatus.Finished) return false;
+                if (order.IsLastStatus()) return false;
 
                 order.MoveToNextStep();
 
@@ -83,11 +80,7 @@ namespace Application.UseCases
             }
         }
 
-        public IEnumerable<Order> GetQueue()
-        {
-            var orders = _orderRepository.GetQueue();
-
-            return orders;
-        }
+        public IEnumerable<OrderViewModel> GetQueue()
+            => OrderViewModel.ToResultList(_orderRepository.GetQueue());
     }
 }

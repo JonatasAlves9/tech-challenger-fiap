@@ -30,6 +30,9 @@ public class Order : BaseEntity, IAggregateRoot
         Status = GetNextStatus(Status);
     }
 
+    public bool IsLastStatus()
+        => Status == OrderStatus.Finished;
+
     private OrderStatus GetNextStatus(OrderStatus currentStatus)
     {
         switch (currentStatus)

@@ -5,9 +5,9 @@ namespace Application.UseCases
 {
     public interface IOrderUseCase 
     {
-        IEnumerable<Order> GetAllOrder();
+        IEnumerable<OrderViewModel> GetAllOrder();
         OrderViewModel Post(OrderViewModel data);
         bool NextStep(Guid orderId);
-        IEnumerable<Order> GetQueue();
+        IEnumerable<OrderViewModel> GetQueue();
     }
 }
