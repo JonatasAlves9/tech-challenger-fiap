@@ -17,7 +17,7 @@ namespace Application.ViewModel
             Discount = order.Discount
         };
 
-        public static List<OrderViewModel> List(IEnumerable<Order> orders) 
+        public static List<OrderViewModel> ToResultList(IEnumerable<Order> orders) 
             => orders.Select(order => new OrderViewModel()
             {
                 Id = order.Id,
