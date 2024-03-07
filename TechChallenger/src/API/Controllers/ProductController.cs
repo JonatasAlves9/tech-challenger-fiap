@@ -1,6 +1,7 @@
 using Application.UseCases;
 using Application.ViewModel;
 using Domain.Entities;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -22,12 +23,12 @@ namespace API.Controllers
         [Route("/")]
         public IActionResult Get()
         {
-            
+
             return Ok(_productUseCase.GetAllProducts());
         }
 
         [HttpPost]
-        public IActionResult CreateProduct([FromBody] CreateProductViewModel productModel)
+        public IActionResult CreateProduct([FromBody] ProductDto.CreateProduct productModel)
         {
             if (productModel == null)
             {
@@ -36,9 +37,9 @@ namespace API.Controllers
 
             try
             {
-                _productUseCase.CreateProduct(productModel);
+                var viewModel = _productUseCase.CreateProduct(productModel);
 
-                return Ok("Produto Criado com sucesso");
+                return Ok(viewModel);
             }
             catch (Exception ex)
             {
@@ -46,9 +47,9 @@ namespace API.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
-        
+
         [HttpPut]
-        public IActionResult UpdateProduct([FromBody] UpdateProductViewModel productModel)
+        public async Task<IActionResult> UpdateProduct([FromBody] ProductDto.UpdateProduct productModel)
         {
             if (productModel == null)
             {
@@ -57,9 +58,9 @@ namespace API.Controllers
 
             try
             {
-                _productUseCase.UpdateProduct(productModel);
-
-                return Ok("Produto atualizado com sucesso");
+                var model = await _productUseCase.UpdateProductAsync(productModel);
+                
+                return Ok(model);
             }
             catch (Exception ex)
             {
@@ -80,7 +81,7 @@ namespace API.Controllers
             {
                 _productUseCase.RemoveProduct(id);
 
-                return Ok("Produto removida com sucesso");
+                return Ok("Product removed successfully!");
             }
             catch (Exception ex)
             {

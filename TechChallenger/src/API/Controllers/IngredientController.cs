@@ -1,3 +1,4 @@
+using Application.DTOs;
 using Application.UseCases;
 using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -31,7 +32,7 @@ namespace API.Controllers
             return Ok(_ingredientUseCase.GetAllIngredients());
         }
         [HttpPost]
-        public IActionResult CreateIngredient([FromBody] Ingredient model)
+        public IActionResult CreateIngredient([FromBody] IngredientDto.CreateIngredient model)
         {
             if (model == null)
             {
@@ -40,9 +41,9 @@ namespace API.Controllers
 
             try
             {
-                _ingredientUseCase.CreateIngredient(model);
+                var viewModel = _ingredientUseCase.CreateIngredient(model);
 
-                return Ok("Categoria foi criada com sucesso");
+                return Ok(viewModel);
             }
             catch (Exception ex)
             {
@@ -52,7 +53,7 @@ namespace API.Controllers
         }
         
         [HttpPut]
-        public IActionResult UpdateIngredient([FromBody] Ingredient model)
+        public async Task<IActionResult> UpdateIngredient([FromBody] IngredientDto.UpdateIngredient model)
         {
             if (model == null)
             {
@@ -61,9 +62,9 @@ namespace API.Controllers
 
             try
             {
-                _ingredientUseCase.UpdateIngredient(model);
+                var viewModel = await _ingredientUseCase.UpdateIngredientAsync(model);
 
-                return Ok("Ingrediente foi criada com sucesso");
+                return Ok(viewModel);
             }
             catch (Exception ex)
             {
@@ -79,7 +80,7 @@ namespace API.Controllers
             {
                 _ingredientUseCase.RemoveIngredient(id);
 
-                return Ok("Categoria foi removida com sucesso!");
+                return Ok("Ingredient removed successfully!");
             }
             catch (Exception ex)
             {

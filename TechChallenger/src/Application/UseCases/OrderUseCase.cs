@@ -1,4 +1,4 @@
-﻿using Application.ViewModel;
+using Application.ViewModel;
 using Domain.Entities;
 using Domain.Repositories;
 
@@ -26,7 +26,7 @@ namespace Application.UseCases
             return _orderRepository.GetAll();
         }
 
-        public object Post(CreateOrderViewModel data)
+        public OrderViewModel Post(OrderViewModel data)
         {
             try
             {
@@ -56,11 +56,7 @@ namespace Application.UseCases
                     _ordersIngredientsRepository.AddRange(ordersIngredients);
                 }
 
-                return new
-                {
-                    message = "Pedido realizado com sucesso",
-                    order_number = order.Id
-                };
+                return OrderViewModel.ToResult(order);
             }
             catch (Exception)
             {

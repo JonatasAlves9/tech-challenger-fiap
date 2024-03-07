@@ -27,7 +27,7 @@ public class CustomerController : ControllerBase
         var customer = _customerUseCase.GetByDocument(document);
 
         if (customer == null)
-            return BadRequest("Nenhum cliente foi encontrado!");
+            return BadRequest("No customers were found!");
         
         return Ok(customer);
     }
@@ -42,7 +42,7 @@ public class CustomerController : ControllerBase
         {
             _customerUseCase.CreateCustomer(customer);
 
-            return Ok("Cliente foi criado com sucesso!");
+            return Ok("Customer created successfully.");
         }
         catch (Exception ex)
         {

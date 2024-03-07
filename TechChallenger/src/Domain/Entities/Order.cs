@@ -14,7 +14,7 @@ public class Order : BaseEntity, IAggregateRoot
     }
 
     [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-    public int Number { get; set; }
+    public int Number { get; private set; }
     [ForeignKey("CustomerId")]
     public Guid CustomerId { get; private set; }
     public double Discount { get; private set; }

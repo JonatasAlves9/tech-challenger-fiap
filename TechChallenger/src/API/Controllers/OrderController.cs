@@ -24,7 +24,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateOrder(CreateOrderViewModel order)
+        public IActionResult CreateOrder(OrderViewModel order)
         {
             if(order == null)  return BadRequest("Invalid order data");
 

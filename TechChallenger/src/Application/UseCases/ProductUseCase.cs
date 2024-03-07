@@ -13,48 +13,47 @@ public class ProductUseCase : IProductUseCase
         _productRepository = productRepository;
     }
 
-    public IEnumerable<Product> GetAllProducts()
+    public IEnumerable<ProductViewModel> GetAllProducts()
     {
-        return _productRepository.GetAll();
+        return ProductViewModel.List(_productRepository.GetAll());
     }
 
-    public object CreateProduct(CreateProductViewModel product)
+    public ProductViewModel CreateProduct(ProductDto.CreateProduct product)
     {
-        var newProduct = Product.CreateProduct(
-            product.Name,
-            product.CategoryId,
-            product.Price,
-            product.Description,
-            product.ImageUrl,
-            product.Estimative
-        );
+        var newProduct = Product.CreateProduct();
+        newProduct
+            .SetName(product.Name)
+            .SetCategoryId(product.CategoryId)
+            .SetPrice(product.Price)
+            .SetDescription(product.Description)
+            .SetImageUrl(product.ImageUrl)
+            .SetEstimative(product.Estimative);
 
         _productRepository.Add(newProduct);
 
-        return newProduct;
+        return ProductViewModel.ToResult(newProduct);
     }
 
-    public object UpdateProduct(UpdateProductViewModel product)
+    public async Task<ProductViewModel> UpdateProductAsync(ProductDto.UpdateProduct product)
     {
-        var existingProduct = _productRepository.GetByIdAsync(product.Id).Result;
+        var existingProduct = await _productRepository.GetByIdAsync(product.Id);
 
         if (existingProduct == null)
         {
-            throw new InvalidOperationException("Produto não encontrado com o ID fornecido.");
+            throw new InvalidOperationException("Product not found with the ID provided.");
         }
 
-        existingProduct.UpdateProduct(
-            product.Name,
-            product.CategoryId,
-            product.Price,
-            product.Description,
-            product.ImageUrl,
-            product.Estimative
-        );
+        existingProduct
+            .SetName(product.Name)
+            .SetCategoryId(product.CategoryId)
+            .SetPrice(product.Price)
+            .SetDescription(product.Description)
+            .SetImageUrl(product.ImageUrl)
+            .SetEstimative(product.Estimative);
 
         _productRepository.Update(existingProduct);
 
-        return product;
+        return ProductViewModel.ToResult(existingProduct);
     }
 
     public void RemoveProduct(Guid id)
@@ -63,9 +62,8 @@ public class ProductUseCase : IProductUseCase
         _productRepository.Remove(product);
     }
 
-    public IEnumerable<Product> GetByCategory(Guid id)
+    public IEnumerable<ProductViewModel> GetByCategory(Guid id)
     {
-        var products = _productRepository.GetByCategory(id);
-        return products;
+        return ProductViewModel.List(_productRepository.GetByCategory(id));
     }
 }

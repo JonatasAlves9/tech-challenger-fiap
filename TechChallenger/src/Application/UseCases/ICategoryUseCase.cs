@@ -1,17 +1,13 @@
 ﻿using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Application.ViewModel;
 
 namespace Application.UseCases
 {
     public interface ICategoryUseCase
     {
-        IEnumerable<Category> GetAllCategories();
-        void CreateCategory(Category category);
-        void UpdateCategory(Category category);
+        IEnumerable<CategoryViewModel> GetAllCategories();
+        void CreateCategory(CategoryDto.CreateCategory category);
+        void UpdateCategory(CategoryDto.UpdateCategory category);
         void RemoveCategory(Guid id);
     }
 }
