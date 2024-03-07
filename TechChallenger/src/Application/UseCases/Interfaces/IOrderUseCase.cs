@@ -1,7 +1,7 @@
 ﻿using Application.ViewModel;
 using Domain.Entities;
 
-namespace Application.UseCases
+namespace Application.UseCases.Interfaces
 {
     public interface IOrderUseCase 
     {

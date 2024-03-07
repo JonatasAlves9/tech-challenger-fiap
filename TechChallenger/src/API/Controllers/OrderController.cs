@@ -1,4 +1,4 @@
-﻿using Application.UseCases;
+﻿using Application.UseCases.Interfaces;
 using Application.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 

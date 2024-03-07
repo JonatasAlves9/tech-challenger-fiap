@@ -1,4 +1,5 @@
 using Application.UseCases;
+using Application.UseCases.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers

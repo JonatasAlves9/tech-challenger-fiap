@@ -1,4 +1,5 @@
 using Application.UseCases;
+using Application.UseCases.Interfaces;
 using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 

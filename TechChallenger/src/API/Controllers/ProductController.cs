@@ -1,7 +1,6 @@
 using Application.UseCases;
+using Application.UseCases.Interfaces;
 using Application.ViewModel;
-using Domain.Entities;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers

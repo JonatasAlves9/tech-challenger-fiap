@@ -1,3 +1,4 @@
+using Application.UseCases.Interfaces;
 using Domain.Entities;
 using Domain.Repositories;
 

@@ -1,5 +1,6 @@
 ﻿using Application.ViewModel;
 ﻿using Application.DTOs;
+using Application.UseCases.Interfaces;
 using Domain.Entities;
 using Domain.Repositories;
 

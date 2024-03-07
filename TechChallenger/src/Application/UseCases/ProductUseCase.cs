@@ -1,4 +1,5 @@
-﻿using Application.ViewModel;
+﻿using Application.UseCases.Interfaces;
+using Application.ViewModel;
 using Domain.Entities;
 using Domain.Repositories;
 

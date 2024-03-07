@@ -1,8 +1,7 @@
 using System.Reflection;
 using Application.UseCases;
+using Application.UseCases.Interfaces;
 using Domain.Repositories;
-using dotenv.net;
-using HealthChecks.UI.Client;
 using Infra.Context;
 using Infra.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -27,29 +26,29 @@ var dbPort = Environment.GetEnvironmentVariable("DB_PORT");
 builder.Services.AddDbContext<TechContext>(options => options
     .UseNpgsql($"host={dbHost};database={dbName};username={dbUser};password={dbPass};port={dbPort}"));
 
-builder.Services.AddTransient<IUserRepository, UserRepository>();
-builder.Services.AddTransient<IUserUseCase, UserUseCase>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserUseCase, UserUseCase>();
 
-builder.Services.AddTransient<IIngredientRepository, IngredientRepository>();
-builder.Services.AddTransient<IIngredientUseCase, IngredientUseCase>();
+builder.Services.AddScoped<IIngredientRepository, IngredientRepository>();
+builder.Services.AddScoped<IIngredientUseCase, IngredientUseCase>();
 
-builder.Services.AddTransient<ITagRepository, TagRepository>();
-builder.Services.AddTransient<ITagUseCase, TagUseCase>();
+builder.Services.AddScoped<ITagRepository, TagRepository>();
+builder.Services.AddScoped<ITagUseCase, TagUseCase>();
 
-builder.Services.AddTransient<IOrderRepository, OrderRepository>();
-builder.Services.AddTransient<IOrderUseCase, OrderUseCase>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IOrderUseCase, OrderUseCase>();
 
-builder.Services.AddTransient<IOrdersProductsRepository, OrdersProductsRepository>();
+builder.Services.AddScoped<IOrdersProductsRepository, OrdersProductsRepository>();
 
-builder.Services.AddTransient<IOrdersIngredientsRepository, OrdersIngredientsRepository>();
+builder.Services.AddScoped<IOrdersIngredientsRepository, OrdersIngredientsRepository>();
 
-builder.Services.AddTransient<IProductsIngredientsRepository, ProductsIngredientsRepository>();
+builder.Services.AddScoped<IProductsIngredientsRepository, ProductsIngredientsRepository>();
 
-builder.Services.AddTransient<IProductRepository, ProductRepository>();
-builder.Services.AddTransient<IProductUseCase, ProductUseCase>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductUseCase, ProductUseCase>();
 
-builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
-builder.Services.AddTransient<ICategoryUseCase, CategoryUseCase>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<ICategoryUseCase, CategoryUseCase>();
 
 
 var app = builder.Build();
