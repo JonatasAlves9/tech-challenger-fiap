@@ -25,7 +25,7 @@ namespace Application.UseCases
             return _orderRepository.GetAll();
         }
 
-        public object Post(OrderViewModel data)
+        public OrderViewModel Post(OrderViewModel data)
         {
             try
             {
@@ -55,7 +55,7 @@ namespace Application.UseCases
                     _ordersIngredientsRepository.AddRange(ordersIngredients);
                 }
 
-                return order;
+                return OrderViewModel.ToResult(order);
             }
             catch (Exception)
             {
