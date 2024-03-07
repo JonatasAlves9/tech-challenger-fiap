@@ -18,11 +18,15 @@ builder.Services.AddSwaggerGen(options =>
     options.IncludeXmlComments(xmlPath);
 });
 builder.Services.AddControllers();
-var envVars = DotEnv.Read();
+
+var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
+var dbName = Environment.GetEnvironmentVariable("DB_NAME");
+var dbUser = Environment.GetEnvironmentVariable("DB_USER");
+var dbPass = Environment.GetEnvironmentVariable("DB_PASS");
+var dbPort = Environment.GetEnvironmentVariable("DB_PORT");
 
 builder.Services.AddDbContext<TechContext>(options => options
-    .UseNpgsql("host=" + envVars["DB_HOST"] + ";database=" + envVars["DB_NAME"] + ";username=" + envVars["DB_USER"] +
-               ";password=" + envVars["DB_PASS"] + ";port=" + envVars["DB_PORT"]));
+    .UseNpgsql($"host={dbHost};database={dbName};username={dbUser};password={dbPass};port={dbPort}"));
 
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUserUseCase, UserUseCase>();
