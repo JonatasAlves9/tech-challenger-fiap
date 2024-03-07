@@ -4,13 +4,13 @@ metadata:
   name: grafana
   namespace: monitoring
   annotations:
-      prometheus.io/scrape: 'true'
-      prometheus.io/port:   '3000'
+    prometheus.io/scrape: 'true'
+    prometheus.io/port:   '3000'
 spec:
-  selector: 
+  selector:
     app: grafana
-  type: NodePort  
+  type: LoadBalancer
   ports:
-    - port: 3000
+    - protocol: TCP
+      port: 3000 
       targetPort: 3000
-      nodePort: 32000
