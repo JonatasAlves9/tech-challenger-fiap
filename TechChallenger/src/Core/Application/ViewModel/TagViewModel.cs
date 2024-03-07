@@ -21,7 +21,7 @@ namespace Application.ViewModel
                 ImageUrl = tag.ImageUrl,
             };
 
-        public static List<TagViewModel> List(IEnumerable<Tag> tags)
+        public static List<TagViewModel> ToResultList(IEnumerable<Tag> tags)
        => tags.Select(tag => new TagViewModel()
        {
            Id = tag.Id,

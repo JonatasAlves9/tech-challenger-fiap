@@ -17,7 +17,7 @@ public class TagUseCase : ITagUseCase
     public IEnumerable<TagViewModel> GetAllTags()
     {
         var tags = _tagRepository.GetAll(); 
-        return TagViewModel.List(tags);
+        return TagViewModel.ToResultList(tags);
     }
     
     public TagViewModel CreateTag(TagDto.CreateTag tag)

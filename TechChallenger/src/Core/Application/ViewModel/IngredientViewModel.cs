@@ -15,7 +15,7 @@ public class IngredientViewModel
         Price = ingredient.Price
     };
 
-    public static List<IngredientViewModel> List(IEnumerable<Ingredient> ingredients) 
+    public static List<IngredientViewModel> ToResultList(IEnumerable<Ingredient> ingredients) 
         => ingredients.Select(ingredient => new IngredientViewModel()
         {
             Id = ingredient.Id,

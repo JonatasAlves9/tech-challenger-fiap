@@ -16,7 +16,7 @@ public class CategoryUseCase : ICategoryUseCase
 
     public IEnumerable<CategoryViewModel> GetAllCategories()
     {
-        return CategoryViewModel.List(_categoryRepository.GetAll());
+        return CategoryViewModel.ToResultList(_categoryRepository.GetAll());
     }
     public CategoryViewModel CreateCategory(CategoryDto.CreateCategory category)
     {

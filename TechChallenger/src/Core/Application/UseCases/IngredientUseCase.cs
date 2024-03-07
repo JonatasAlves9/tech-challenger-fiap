@@ -16,7 +16,7 @@ public class IngredientUseCase : IIngredientUseCase
 
     public IEnumerable<IngredientViewModel> GetAllIngredients()
     {
-        return IngredientViewModel.List(_ingredientRepository.GetAll());
+        return IngredientViewModel.ToResultList(_ingredientRepository.GetAll());
     }
     public IngredientViewModel CreateIngredient(IngredientDto.CreateIngredient ingredient)
     {

@@ -24,7 +24,7 @@ namespace Application.ViewModel
                 Estimative = product.Estimative,
             };
         
-        public static List<ProductViewModel> List(IEnumerable<Product> products)
+        public static List<ProductViewModel> ToResultList(IEnumerable<Product> products)
             => products.Select(product => new ProductViewModel()
             {
                 Name = product.Name,

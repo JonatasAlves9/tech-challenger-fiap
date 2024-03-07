@@ -13,7 +13,7 @@ public class CategoryViewModel
         Name = category.Name
     };
 
-    public static List<CategoryViewModel> List(IEnumerable<Category> categories) 
+    public static List<CategoryViewModel> ToResultList(IEnumerable<Category> categories) 
         => categories.Select(category => new CategoryViewModel()
         {
             Id = category.Id,

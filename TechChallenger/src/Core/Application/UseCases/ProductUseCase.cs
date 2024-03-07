@@ -15,7 +15,7 @@ public class ProductUseCase : IProductUseCase
 
     public IEnumerable<ProductViewModel> GetAllProducts()
     {
-        return ProductViewModel.List(_productRepository.GetAll());
+        return ProductViewModel.ToResultList(_productRepository.GetAll());
     }
 
     public ProductViewModel CreateProduct(ProductDto.CreateProduct product)
@@ -64,6 +64,6 @@ public class ProductUseCase : IProductUseCase
 
     public IEnumerable<ProductViewModel> GetByCategory(Guid id)
     {
-        return ProductViewModel.List(_productRepository.GetByCategory(id));
+        return ProductViewModel.ToResultList(_productRepository.GetByCategory(id));
     }
 }
