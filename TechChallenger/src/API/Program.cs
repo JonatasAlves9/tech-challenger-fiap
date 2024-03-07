@@ -1,6 +1,7 @@
 using System.Reflection;
 using Application.UseCases;
 using Domain.Repositories;
+using dotenv.net;
 using HealthChecks.UI.Client;
 using Infra.Context;
 using Infra.Repositories;
@@ -17,9 +18,11 @@ builder.Services.AddSwaggerGen(options =>
     options.IncludeXmlComments(xmlPath);
 });
 builder.Services.AddControllers();
+var envVars = DotEnv.Read();
 
 builder.Services.AddDbContext<TechContext>(options => options
-        .UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    .UseNpgsql("host=" + envVars["DB_HOST"] + ";database=" + envVars["DB_NAME"] + ";username=" + envVars["DB_USER"] +
+               ";password=" + envVars["DB_PASS"] + ";port=" + envVars["DB_PORT"]));
 
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUserUseCase, UserUseCase>();
@@ -58,10 +61,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseSwagger();
-app.UseSwaggerUI(c =>
-{
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Tech Challenge v1");
-});
+app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Tech Challenge v1"); });
 
 app.UseHttpsRedirection();
 
