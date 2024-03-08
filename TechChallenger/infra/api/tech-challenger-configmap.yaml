@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tech-challenger-config
+data:
+  DB_HOST: "192.168.175.95"
+  DB_PORT: "5432"
+  DB_USER: "postgres"
+  DB_PASS: "T3cHCh@113ng3"
+  DB_NAME: "postgres"
