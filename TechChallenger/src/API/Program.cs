@@ -17,14 +17,18 @@ builder.Services.AddSwaggerGen(options =>
 });
 builder.Services.AddControllers();
 
-var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
-var dbName = Environment.GetEnvironmentVariable("DB_NAME");
-var dbUser = Environment.GetEnvironmentVariable("DB_USER");
-var dbPass = Environment.GetEnvironmentVariable("DB_PASS");
-var dbPort = Environment.GetEnvironmentVariable("DB_PORT");
+// var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
+// var dbName = Environment.GetEnvironmentVariable("DB_NAME");
+// var dbUser = Environment.GetEnvironmentVariable("DB_USER");
+// var dbPass = Environment.GetEnvironmentVariable("DB_PASS");
+// var dbPort = Environment.GetEnvironmentVariable("DB_PORT");
+//
+// builder.Services.AddDbContext<TechContext>(options => options
+//     .UseNpgsql($"host={dbHost};database={dbName};username={dbUser};password={dbPass};port={dbPort}"));
 
 builder.Services.AddDbContext<TechContext>(options => options
-    .UseNpgsql($"host={dbHost};database={dbName};username={dbUser};password={dbPass};port={dbPort}"));
+    .UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserUseCase, UserUseCase>();
