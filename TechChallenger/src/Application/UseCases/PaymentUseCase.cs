@@ -25,7 +25,10 @@ namespace Application.UseCases
 
             data.NotificationUrl = $"{Environment.GetEnvironmentVariable("URL_API")}Payment/Receipt?orderId={data.OrderId}";
 
-            string json = JsonConvert.SerializeObject(data);
+            string json = JsonConvert.SerializeObject(data, Formatting.None, new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore
+            });
 
             HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -38,7 +41,8 @@ namespace Application.UseCases
 
                     if (response.IsSuccessStatusCode)
                     {
-                        var result = JsonConvert.DeserializeObject<CreateQRCodeResponseViewModel>(response.Content.ReadAsStringAsync().Result);
+                        var result = new CreateQRCodeResponseViewModel();
+                        JsonConvert.PopulateObject(response.Content.ReadAsStringAsync().Result, result);
 
                         return result;
                     }
