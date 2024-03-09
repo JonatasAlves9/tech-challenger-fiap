@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
       <PackageReference Include="Riok.Mapperly" Version="3.4.0-next.5" />
     </ItemGroup>
 
