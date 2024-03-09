@@ -23,7 +23,7 @@ namespace Application.UseCases
         {
             string url = $"https://api.mercadopago.com/instore/orders/qr/seller/collectors/{Environment.GetEnvironmentVariable("MP_USER_ID")}/pos/{Environment.GetEnvironmentVariable("MP_POS_ID")}/qrs";
 
-            data.NotificationUrl = $"{Environment.GetEnvironmentVariable("MP_URL")}Payment/Receipt?orderId={data.OrderId}";
+            data.NotificationUrl = $"{Environment.GetEnvironmentVariable("URL_API")}Payment/Receipt?orderId={data.OrderId}";
 
             string json = JsonConvert.SerializeObject(data);
 

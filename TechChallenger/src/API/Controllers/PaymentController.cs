@@ -6,6 +6,7 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace API.Controllers
 {
+    [ApiController]
     [Route("[controller]")]
     public class PaymentController : Controller
     {
@@ -26,11 +27,11 @@ namespace API.Controllers
         /// <exception cref="BadRequestObjectResult">Os dados do parametro estão inválidos.</exception>
         /// <exception cref="ObjectResult">Ocorreu um erro inesperado no servidor.</exception>
         [HttpPost]
-        [Route("CreateQRCode")]
         [SwaggerOperation(Summary = "Gera um QR Code para pagameto.", Description = "Método para criação de um QR Code")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(string))]
+        [Route("CreateQrCode")]
         public IActionResult CreateQRCode([FromBody] CreateQRCodeDTO model)
         {
             if (model == null)
@@ -59,11 +60,11 @@ namespace API.Controllers
         /// <exception cref="BadRequestObjectResult">Os dados do parametro estão inválidos.</exception>
         /// <exception cref="ObjectResult">Ocorreu um erro inesperado no servidor.</exception>
         [HttpPost]
-        [Route("Receipt")]
         [SwaggerOperation(Summary = "Efetua o pagamento do pedido.", Description = "Método para efetuar o pagamento do pedido")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(string))]
+        [Route("Receipt")]
         public IActionResult Receipt([FromBody] ReceiptViewModel model, Guid? orderId)
         {
             if (model == null)
