@@ -9,7 +9,7 @@ namespace Application.UseCases.Interfaces
         OrderViewModel Post(OrderViewModel data);
         bool NextStep(Guid orderId);
         IEnumerable<Order> GetQueue();
-        bool IsPaid(Guid orderId);
+        object IsPaid(Guid orderId);
         object GetOrdersByStatus();
     }
 }

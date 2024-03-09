@@ -88,7 +88,7 @@ namespace API.Controllers
             {
                 var viewModel = _categoryUseCase.UpdateCategory(model);
 
-                return Ok(viewModel);
+                return Ok(viewModel.Result);
             }
             catch (Exception ex)
             {

@@ -6,9 +6,8 @@ export let errorRate = new Rate("errors");
 
 export default function () {
   var url =
-    "http://af8563dcb1efe464db80233aa8e3ccb2-60524262.us-east-1.elb.amazonaws.com/order";
+    "http://a41e31c7bb4174d859b99b608a0c83c7-1382405691.us-east-1.elb.amazonaws.com/order";
   check(http.get(url), {
     "status is 200": (r) => r.status == 200,
   }) || errorRate.add(1);
 }
-

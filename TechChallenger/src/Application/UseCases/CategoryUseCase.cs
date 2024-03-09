@@ -31,14 +31,19 @@ public class CategoryUseCase : ICategoryUseCase
     }
     public async Task<CategoryViewModel> UpdateCategory(CategoryDto.UpdateCategory category)
     {
-        var newCategory = Category.Create();
+        var existingProduct = await _categoryRepository.GetByIdAsync(category.id);
 
-        newCategory
-            .SetName(category.Name);
+        if (existingProduct == null)
+        {
+            throw new InvalidOperationException("Product not found with the ID provided.");
+        }
         
-        _categoryRepository.Add(newCategory);
+        existingProduct
+            .SetName(category.Name);
 
-        return CategoryViewModel.ToResult(newCategory);
+        _categoryRepository.Update(existingProduct);
+
+        return CategoryViewModel.ToResult(existingProduct);
     }
     public void RemoveCategory(Guid id)
     {

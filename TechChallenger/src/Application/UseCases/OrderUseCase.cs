@@ -13,16 +13,21 @@ namespace Application.UseCases
         private readonly IProductsIngredientsRepository _productsIngredientsRepository;
         private readonly IOrdersIngredientsRepository _ordersIngredientsRepository;
 
-        public OrderUseCase(IOrderRepository orderRepository, IOrdersProductsRepository ordersProductsRepository, IOrdersIngredientsRepository ordersIngredientsRepository, IProductsIngredientsRepository productsIngredientsRepository)
+        public OrderUseCase(IOrderRepository orderRepository, IOrdersProductsRepository ordersProductsRepository,
+            IOrdersIngredientsRepository ordersIngredientsRepository,
+            IProductsIngredientsRepository productsIngredientsRepository)
         {
             _orderRepository = orderRepository;
             _ordersProductsRepository = ordersProductsRepository;
             _ordersIngredientsRepository = ordersIngredientsRepository;
             _productsIngredientsRepository = productsIngredientsRepository;
-        }   
+        }
 
-        public IEnumerable<OrderViewModel> GetAllOrder()
-         => OrderViewModel.ToResultList(_orderRepository.GetAll());
+
+        public IEnumerable<Order> GetAllOrder()
+        {
+            return _orderRepository.GetAll();
+        }
 
         public OrderViewModel Post(OrderViewModel data)
         {
@@ -36,7 +41,8 @@ namespace Application.UseCases
 
                 foreach (var productItem in data.OrdersProducts)
                 {
-                    orderProducts.Add(OrdersProducts.CreateOrdersProducts(order.Id, productItem.ProductId, productItem.Quantity));
+                    orderProducts.Add(OrdersProducts.CreateOrdersProducts(order.Id, productItem.ProductId,
+                        productItem.Quantity));
 
                     var ordersIngredients = new List<OrdersIngredients>();
 
@@ -46,7 +52,9 @@ namespace Application.UseCases
                     {
                         foreach (var ingredientItem in data.OrdersIngredients)
                         {
-                            ordersIngredients.Add(OrdersIngredients.CreateOrdersIngredients(productIngredientItem.IngredientId, order.Id, ingredientItem.ProductId, ingredientItem.Quantity));
+                            ordersIngredients.Add(OrdersIngredients.CreateOrdersIngredients(
+                                productIngredientItem.IngredientId, order.Id, ingredientItem.ProductId,
+                                ingredientItem.Quantity));
                         }
                     }
 
@@ -62,7 +70,7 @@ namespace Application.UseCases
             }
         }
 
-        public bool IsPaid(Guid orderId)
+        public object IsPaid(Guid orderId)
         {
             try
             {
@@ -70,20 +78,21 @@ namespace Application.UseCases
 
                 if (order.IsPaid) return true;
 
-                return false;
+                return new { message = order.IsPaid ? "Payment approved" : "Payment not founded", IsPaid = order.IsPaid };
             }
             catch (Exception)
             {
                 return false;
             }
         }
+
         public bool NextStep(Guid orderId)
         {
             try
             {
                 var order = _orderRepository.GetByIdAsync(orderId).Result;
 
-                if (order.IsLastStatus()) return false;
+                if (order.Status == Domain.Enums.OrderStatus.Finished) return false;
 
                 order.MoveToNextStep();
 
@@ -97,9 +106,13 @@ namespace Application.UseCases
             }
         }
 
-        public IEnumerable<OrderViewModel> GetQueue()
-            => OrderViewModel.ToResultList(_orderRepository.GetQueue());
-        
+        public IEnumerable<Order> GetQueue()
+        {
+            var orders = _orderRepository.GetQueue();
+
+            return orders;
+        }
+
         public object GetOrdersByStatus()
         {
             var orders = _orderRepository.GetOrdersByStatus();

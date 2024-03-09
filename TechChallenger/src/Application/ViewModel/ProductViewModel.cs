@@ -27,6 +27,7 @@ namespace Application.ViewModel
         public static List<ProductViewModel> ToResultList(IEnumerable<Product> products)
             => products.Select(product => new ProductViewModel()
             {
+                Id = product.Id,
                 Name = product.Name,
                 CategoryId = product.CategoryId,
                 Price = product.Price,
