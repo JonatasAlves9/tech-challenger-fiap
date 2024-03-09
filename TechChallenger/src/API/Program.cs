@@ -54,6 +54,9 @@ builder.Services.AddScoped<IProductUseCase, ProductUseCase>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ICategoryUseCase, CategoryUseCase>();
 
+builder.Services.AddScoped<IPaymentUseCase, PaymentUseCase>();
+
+
 
 var app = builder.Build();
 
