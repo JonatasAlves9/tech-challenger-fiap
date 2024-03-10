@@ -1,5 +1,8 @@
 # Tech Challenge FIAP
 
+# Desenho da arquitetura
+Link: https://www.figma.com/file/Ucj1iHtpaTif7amdmwKUfR/Arquitetura---AWS-Tech-Challenger?type=whiteboard&node-id=0%3A1&t=rP3icHWmtlshkT5Q-1
+
 # Guia de Execução do Kubernetes
 
 Este é um guia passo a passo para executar o Kubernetes e configurar todos os componentes necessários para o seu sistema.
