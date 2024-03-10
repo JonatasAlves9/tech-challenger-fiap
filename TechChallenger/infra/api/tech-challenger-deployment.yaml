@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tech-challenger-deployment
+  annotations:
+    kubernetes.io/change-cause: "Initial deployment."
+  labels:
+    app: tech-challenger
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tech-challenger
+  template:
+    metadata:
+      name: techchallengerk8s
+      labels:
+        env: prod
+        app: tech-challenger
+        app.kubernetes.io/name: tech-challenger
+    spec:
+      containers:
+        - name: tech-challenger
+          image: jonatasalvesdev/tech-challenger:3.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: 200m
+              memory: 200Mi
+          envFrom:
+            - configMapRef:
+                name: tech-challenger-config
+---
+# Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: tech-challenger-service
+spec:
+  selector:
+    app: tech-challenger
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
