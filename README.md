@@ -9,7 +9,7 @@ Este é um guia passo a passo para executar o Kubernetes e configurar todos os c
 1. Clone este repositório em sua máquina local:
 
     ```
-    git clone <URL_DO_SEU_REPOSITORIO>
+    git clone https://github.com/JonatasAlves9/tech-challenger-fiap.git
     ```
 
 ## Configurando a Infraestrutura
