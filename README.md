@@ -17,7 +17,7 @@ Este é um guia passo a passo para executar o Kubernetes e configurar todos os c
 1. Navegue até o diretório `infra`:
 
     ```
-    cd infra
+    cd TechChallenger/infra
     ```
 
 2. Aplique as configurações do banco de dados:
