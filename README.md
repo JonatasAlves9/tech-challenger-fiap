@@ -1,5 +1,107 @@
 # Tech Challenge FIAP
 
+# Guia de Execução do Kubernetes
+
+Este é um guia passo a passo para executar o Kubernetes e configurar todos os componentes necessários para o seu sistema.
+
+## Clonando o Repositório
+
+1. Clone este repositório em sua máquina local:
+
+    ```
+    git clone <URL_DO_SEU_REPOSITORIO>
+    ```
+
+## Configurando a Infraestrutura
+
+1. Navegue até o diretório `infra`:
+
+    ```
+    cd infra
+    ```
+
+2. Aplique as configurações do banco de dados:
+
+    ```
+    kubectl apply -f database
+    ```
+
+3. Obtenha o Cluster IP do banco de dados executando o seguinte comando:
+
+    ```
+    kubectl get svc
+    ```
+
+4. Edite o arquivo de ConfigMap localizado em `api/tech-challenger-configmap.yaml` e altere o valor de `DB_HOST` para o Cluster IP obtido.
+
+5. Aplique as configurações do ConfigMap:
+
+    ```
+    kubectl apply -f api/tech-challenger-configmap.yaml
+    ```
+
+6. Aplique as configurações do Deployment da API:
+
+    ```
+    kubectl apply -f api/tech-challenger-deployment.yaml
+    ```
+
+Agora a API e o banco de dados estão em execução.
+
+## Configurando o Grafana e o Prometheus
+
+1. Navegue até o diretório `infra/monitoring`:
+
+    ```
+    cd ../monitoring
+    ```
+
+2. Crie um novo namespace para o monitoramento:
+
+    ```
+    kubectl create namespace monitoring
+    ```
+
+3. Aplique as configurações do Prometheus:
+
+    ```
+    kubectl create -f k8s-prometheus/clusterRole.yaml
+    kubectl create -f k8s-prometheus/config-map.yaml
+    kubectl create -f k8s-prometheus/prometheus-deployment.yaml
+    kubectl create -f k8s-prometheus/prometheus-service.yaml --namespace=monitoring
+    ```
+
+4. Aplique as configurações do Grafana:
+
+    ```
+    kubectl apply -f kube-state-metrics/
+    kubectl create -f k8s-grafana/
+    ```
+
+Agora o Grafana e o Prometheus estão em execução.
+
+## Configurando a Escalabilidade
+
+1. Navegue até o diretório `api/scaling`:
+
+    ```
+    cd ../../api/scaling
+    ```
+
+2. Aplique as configurações de métricas:
+
+    ```
+    kubectl apply -f metrics.yaml
+    ```
+
+3. Aplique as configurações do Horizontal Pod Autoscaler (HPA):
+
+    ```
+    kubectl apply -f hpa.yaml
+    ```
+
+Agora todo o sistema está configurado e funcionando perfeitamente.
+
 ## Projeto
 Sistema de pedidos de uma lanchonete de bairro
 
@@ -16,84 +118,3 @@ Sistema de pedidos de uma lanchonete de bairro
   - Linguagem: C#
   - Banco de Dados: Postgres
   - Infraestrutura: Containers em Docker
-
-## Detalhes do Projeto
-
-### Pedido
-Os clientes são apresentados a uma interface de seleção na qual podem optar por se identificarem via CPF, se cadastrarem com nome, e-mail ou não se identificar, podendo montar o combo na seguinte sequência, sendo todas elas opcionais: 
-  - Lanche
-  - Acompanhamento
-  - Bebida 
-
-Em cada etapa é exibido o nome, descrição e preço de cada produto.
-
-### Pagamento
-O sistema deverá possuir uma opção de pagamento integrada para MVP.
-
-A forma de pagamento oferecida será via QRCode do Mercado Pago.
-
-### Acompanhamento
-Uma vez que o pedido é confirmado e pago, ele é enviado para a cozinha para ser preparado.
-
-Simultaneamente deve aparecer em um monitor para o cliente acompanhar o progresso do seu pedido com as seguintes etapas:
-  1. Recebido
-  2. Em preparação
-  3. Pronto
-  4. Finalizado
-
-### Entrega
-Quando o pedido estiver pronto, o sistema deverá notificar o cliente que ele está pronto para retirada. 
-
-Ao ser retirado, o pedido deve ser atualizado para o status finalizado.
-
-Além das etapas do cliente, o estabelecimento precisa de um acesso administrativo.
-
-### Gerenciar clientes
-Com a identificação dos clientes o estabelecimento pode trabalhar em campanhas promocionais.
-
-### Gerenciar produtos e categorias
-Os produtos dispostos para escolha do cliente serão gerenciados pelo estabelecimento, definindo nome, categoria, preço, descrição e imagens.
-
-Para esse sistema teremos categorias fixas
-  - Lanche
-  - Acompanhamento
-  - Bebida
-  - Sobremesa
-
-### Acompanhamento de pedidos
-Deve ser possível acompanhar os pedidos em andamento e tempo de espera de cada pedido.
-
-As informações dispostas no sistema de pedidos precisarão ser gerenciadas pelo estabelecimento através de um painel administrativo.
-
-
-## Entregáveis
-### Fase 1
-
-#### Entragável 01
-Documentação do sistema (DDD) utilizando a linguagem ubíqua, dos seguintes fluxos: 
-  - Realização do pedido e pagamento
-  - Preparação e entrega do pedido
-
-#### Entregável 02
-Uma aplicação para todo sistema de backend (monolito) que deverá ser desenvolvido seguindo os padrões apresentados nas aulas: 
-  1. Utilizando arquitetura hexagonal 
-  2. APIs
-     - Cadastro do Cliente
-     - Identificação do Cliente via CPF
-     - Criar, editar e remover de produto
-     - Buscar produtos por categoria
-     - Fake checkout, apenas enviar os produtos escolhidos para a fila
-     - Listar os pedidos
-  3. Aplicação deverá ser escalável para atender grandes volumes nos horários de pico
-  4. Banco de dados a sua escolha
-     - Inicialmente deveremos trabalhar e organizar a fila dos pedidos apenas em banco de dados
-
-#### Entregável 03
-A aplicação deve ser entregue com um Dockerfile configurado para executá-la corretamente.
-
-Para validação da POC, temos a seguinte limitação de infraestrutura: 
-
-- 1 instância para banco de dados
-- 1 instâncias para executar aplicação
-  
-Não será necessário o desenvolvimento de interfaces para o frontend, o foco deve ser total no backend.
