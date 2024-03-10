@@ -1,7 +1,11 @@
 # Tech Challenge FIAP
 
-# Desenho da arquitetura
-Link: https://www.figma.com/file/Ucj1iHtpaTif7amdmwKUfR/Arquitetura---AWS-Tech-Challenger?type=whiteboard&node-id=0%3A1&t=rP3icHWmtlshkT5Q-1
+## Desenho da arquitetura (AWS - EKS)
+
+![Descrição da imagem](assets/arquitetura.png)
+
+Link do Figma: </br>
+https://www.figma.com/file/Ucj1iHtpaTif7amdmwKUfR/Arquitetura---AWS-Tech-Challenger?type=whiteboard&node-id=0%3A1&t=rP3icHWmtlshkT5Q-1
 
 # Guia de Execução do Kubernetes
 
