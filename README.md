@@ -110,7 +110,6 @@ Sistema de pedidos de uma lanchonete de bairro
   - Zanaro - RM 352692
   - Jônatas - RM 353060
   - Matheus - RM 352813
-  - Luiz - RM 353114
 
 ## Desenvolvimento
   - Acompanhamento (Click Up): https://app.clickup.com/9017094286/v/b/8cqbw4e-57
