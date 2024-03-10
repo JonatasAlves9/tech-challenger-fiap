@@ -1,13 +1,9 @@
-﻿using Application.DTOs;
+﻿using System.Text;
+using Application.DTOs;
 using Application.UseCases.Interfaces;
 using Application.ViewModel.MercadoPago;
 using Domain.Repositories;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.UseCases
 {
@@ -62,14 +58,14 @@ namespace Application.UseCases
         {
             try
             {
-                if(data.Collection?.Status?.ToLower() != "approved")
-                {
-                    return new
-                    {
-                        Sucess = true,
-                        Message = "Notification received"
-                    };
-                }
+                // if(data.Collection?.Status?.ToLower() != "approved")
+                // {
+                //     return new
+                //     {
+                //         Sucess = true,
+                //         Message = "Notification received"
+                //     };
+                // }
 
                 if(orderId == null)
                 {
@@ -82,7 +78,7 @@ namespace Application.UseCases
 
                 var order = _orderRepository.GetByIdAsync((Guid)orderId).Result;
 
-                order.MoveToNextStep();
+                order.MarkAsPaid();
 
                 _orderRepository.Update(order);
 

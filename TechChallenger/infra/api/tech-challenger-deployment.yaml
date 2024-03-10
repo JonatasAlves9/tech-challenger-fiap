@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: tech-challenger
-          image: jonatasalvesdev/tech-challenger:3.1
+          image: jonatasalvesdev/tech-challenger:3.3
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080

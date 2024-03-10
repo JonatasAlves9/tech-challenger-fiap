@@ -76,8 +76,6 @@ namespace Application.UseCases
             {
                 var order = _orderRepository.GetByIdAsync(orderId).Result;
 
-                if (order.IsPaid) return true;
-
                 return new { message = order.IsPaid ? "Payment approved" : "Payment not founded", IsPaid = order.IsPaid };
             }
             catch (Exception)

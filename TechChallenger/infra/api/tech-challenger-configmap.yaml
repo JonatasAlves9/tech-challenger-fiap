@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: tech-challenger-config
 data:
-  DB_HOST: "192.168.31.18"
+  DB_HOST: "10.100.111.8"
   DB_PORT: "5432"
   DB_USER: "postgres"
   DB_PASS: "T3cHCh@113ng3"
