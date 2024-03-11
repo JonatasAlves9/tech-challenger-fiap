@@ -109,6 +109,44 @@ Agora o Grafana e o Prometheus estão em execução.
 
 Agora todo o sistema está configurado e funcionando perfeitamente.
 
+## Importando uma Collection JSON no Postman
+
+Esta sessão descreve os passos necessários para importar uma Collection JSON no Postman a partir de um arquivo local.</br>
+Link:    [Tech Challenger.postman_collection.json](https://github.com/JonatasAlves9/tech-challenger-fiap/blob/main/assets/Tech%20Challenger.postman_collection.json)
+
+
+## Passos
+
+1. **Faça o Download do Postman:**
+   - Se você ainda não tem o Postman instalado, faça o download e instale a versão adequada para o seu sistema operacional no [site oficial do Postman](https://www.postman.com/downloads/).
+
+2. **Abra o Postman:**
+   - Após a instalação, abra o aplicativo Postman em seu sistema.
+
+3. **Importe a Collection:**
+   - No topo da janela do Postman, você verá uma barra de navegação. Clique no botão "Import" (Importar).
+
+4. **Selecione o Arquivo .json:**
+   - Uma janela de diálogo será aberta. Navegue até o local onde você tem o arquivo .json da Collection.
+   - Selecione o arquivo Tech_Challenger.postman_collection.json.
+
+5. **Confirme a Importação:**
+   - Após selecionar o arquivo, o Postman apresentará uma visão geral da Collection que será importada. Certifique-se de que é a coleção correta.
+
+6. **Clique em "Import":**
+   - Depois de revisar a Collection, clique no botão "Import" (Importar) para carregar a Collection no Postman.
+
+7. **Localize a Collection:**
+   - Agora que a Collection foi importada com sucesso, você pode encontrá-la na barra lateral esquerda do Postman, na seção "Collections" (Coleções).
+
+8. **Execute a Collection (Opcional):**
+   - Você pode executar a Collection clicando nela e selecionando o botão "Run" (Executar) no canto superior direito. Isso abrirá o Runner do Postman, onde você pode configurar as execuções.
+
+9. **Explore e Utilize:**
+   - Com a Collection importada, você pode explorar suas solicitações, testes e outras configurações. Sinta-se à vontade para modificar ou adicionar solicitações conforme necessário.
+
+Espero que este guia 
+
 ## Projeto
 Sistema de pedidos de uma lanchonete de bairro
 
