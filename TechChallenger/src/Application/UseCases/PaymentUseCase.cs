@@ -44,7 +44,7 @@ namespace Application.UseCases
                     }
                     else
                     {
-                        throw new Exception("Erro ao realizar a integração: " + response.RequestMessage);
+                        throw new Exception("Error performing integration:: " + response.RequestMessage);
                     }
                 }
                 catch (Exception ex)
@@ -54,44 +54,24 @@ namespace Application.UseCases
             }
         }
 
-        public object PayingOrder(ReceiptViewModel data, Guid? orderId)
+        public bool PayingOrder(ReceiptViewModel data, Guid orderId)
         {
             try
             {
-                // if(data.Collection?.Status?.ToLower() != "approved")
-                // {
-                //     return new
-                //     {
-                //         Sucess = true,
-                //         Message = "Notification received"
-                //     };
-                // }
+                var order = _orderRepository.GetByIdAsync(orderId).Result;
 
-                if(orderId == null)
-                {
-                    return new
-                    {
-                        Sucess = true,
-                        Message = "Notification received: OrderId cannot be null! "
-                    };
-                }
-
-                var order = _orderRepository.GetByIdAsync((Guid)orderId).Result;
-
+                if (order == null)
+                    throw new Exception("Order not found!");
+                
                 order.MarkAsPaid();
 
                 _orderRepository.Update(order);
 
-                return new
-                {
-                    Sucess = true,
-                    Message = "Payment made"
-                };
+                return false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
-                return new Exception(ex.Message);
+                return false;
             }
         }
     }

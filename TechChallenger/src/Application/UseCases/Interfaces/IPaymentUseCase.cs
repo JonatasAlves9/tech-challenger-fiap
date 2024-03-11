@@ -11,6 +11,6 @@ namespace Application.UseCases.Interfaces
     public interface IPaymentUseCase
     {
         object CreateQRCode(CreateQRCodeDTO data);
-        object PayingOrder(ReceiptViewModel data, Guid? orderId);
+        bool PayingOrder(ReceiptViewModel data, Guid orderId);
     }
 }
