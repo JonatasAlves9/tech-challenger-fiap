@@ -1,0 +1,1705 @@
+{
+	"info": {
+		"_postman_id": "08037d50-3602-4fce-889d-8d7d50158457",
+		"name": "Tech Challenger",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12296512"
+	},
+	"item": [
+		{
+			"name": "Categorias",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain"
+							}
+						],
+						"url": {
+							"raw": "{{base_url_tech_challenger}}/categories",
+							"host": [
+								"{{base_url_tech_challenger}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/Categories",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Categories"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"createdAt\": \"<dateTime>\",\n    \"deleteAt\": \"<dateTime>\",\n    \"name\": \"<string>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"createdAt\": \"<dateTime>\",\n    \"deleteAt\": \"<dateTime>\",\n    \"name\": \"<string>\"\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "text/plain"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Salgados\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_tech_challenger}}/categories",
+							"host": [
+								"{{base_url_tech_challenger}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\",\n  \"deleteAt\": \"<dateTime>\",\n  \"name\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Categories",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Categories"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "<string>"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\",\n  \"deleteAt\": \"<dateTime>\",\n  \"name\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Categories",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Categories"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "<string>"
+						},
+						{
+							"name": "Server Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\",\n  \"deleteAt\": \"<dateTime>\",\n  \"name\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Categories",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Categories"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "<string>"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "text/plain"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"6c2e97b6-25bb-4176-a0e7-c7a2be242925\",\n  \"name\": \"Salgados diversos\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_tech_challenger}}/categories",
+							"host": [
+								"{{base_url_tech_challenger}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\",\n  \"deleteAt\": \"<dateTime>\",\n  \"name\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Categories",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Categories"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "<string>"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\",\n  \"deleteAt\": \"<dateTime>\",\n  \"name\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Categories",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Categories"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "<string>"
+						},
+						{
+							"name": "Server Error",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\",\n  \"deleteAt\": \"<dateTime>\",\n  \"name\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Categories",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Categories"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "<string>"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain"
+							}
+						],
+						"url": {
+							"raw": "{{base_url_tech_challenger}}/categories?id=6c2e97b6-25bb-4176-a0e7-c7a2be242925",
+							"host": [
+								"{{base_url_tech_challenger}}"
+							],
+							"path": [
+								"categories"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "6c2e97b6-25bb-4176-a0e7-c7a2be242925",
+									"description": "Identificador da categoria"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/Categories?id=<uuid>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Categories"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "<uuid>",
+											"description": "Identificador da categoria"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "<string>"
+						},
+						{
+							"name": "Server Error",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/Categories?id=<uuid>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Categories"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "<uuid>",
+											"description": "Identificador da categoria"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "<string>"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ingredientes",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain"
+							}
+						],
+						"url": {
+							"raw": "{{base_url_tech_challenger}}/ingredients",
+							"host": [
+								"{{base_url_tech_challenger}}"
+							],
+							"path": [
+								"ingredients"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/Ingredients",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Ingredients"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"createdAt\": \"<dateTime>\",\n    \"deleteAt\": \"<dateTime>\",\n    \"name\": \"<string>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"createdAt\": \"<dateTime>\",\n    \"deleteAt\": \"<dateTime>\",\n    \"name\": \"<string>\"\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Queijo\",\n  \"price\": \"3.00\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_tech_challenger}}/ingredients",
+							"host": [
+								"{{base_url_tech_challenger}}"
+							],
+							"path": [
+								"ingredients"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\",\n  \"deleteAt\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"price\": \"<double>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Ingredients",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Ingredients"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"12c22a9b-a4b5-4871-9f81-1a13825c7502\",\n  \"name\": \"Queijo Suiço\",\n  \"price\": \"3.50\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_tech_challenger}}/ingredients",
+							"host": [
+								"{{base_url_tech_challenger}}"
+							],
+							"path": [
+								"ingredients"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\",\n  \"deleteAt\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"price\": \"<double>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Ingredients",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Ingredients"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_tech_challenger}}/ingredients?id=12c22a9b-a4b5-4871-9f81-1a13825c7502",
+							"host": [
+								"{{base_url_tech_challenger}}"
+							],
+							"path": [
+								"ingredients"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "12c22a9b-a4b5-4871-9f81-1a13825c7502"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Ingredients?id=<uuid>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Ingredients"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "<uuid>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Pedidos",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_tech_challenger}}/order",
+							"host": [
+								"{{base_url_tech_challenger}}"
+							],
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Order",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Order"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Create QRCode",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cashOut\": {\n    \"amount\": 0\n  },\n  \"description\": \"string\",\n  \"externalReference\": \"string\",\n  \"items\": [\n    {\n      \"skuNumber\": \"123456\",\n      \"category\": \"Alimento\",\n      \"title\": \"Pastel\",\n      \"description\": \"Pastel de queijo\",\n      \"unitPrice\": 1,\n      \"quantity\": 1,\n      \"unitMeasure\": \"string\",\n      \"totalAmount\": 1\n    }\n  ],\n  \"notificationUrl\": \"http://a41e31c7bb4174d859b99b608a0c83c7-1382405691.us-east-1.elb.amazonaws.com/payment/receipt?orderId=da7c8e28-f7b8-48b4-b67c-5509a5a68980\",\n  \"title\": \"Pastel de queijo\",\n  \"totalAmount\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_tech_challenger}}/Payment/CreateQrCode",
+							"host": [
+								"{{base_url_tech_challenger}}"
+							],
+							"path": [
+								"Payment",
+								"CreateQrCode"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Order",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Order"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Checkout Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"discount\": \"0\",\n  \"ordersProducts\": [\n    {\n      \"productId\": \"ff514eea-1d28-4448-a09e-c9b82d004e5e\",\n      \"quantity\": \"1\"\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_tech_challenger}}/order",
+							"host": [
+								"{{base_url_tech_challenger}}"
+							],
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"customerId\": \"<uuid>\",\n  \"discount\": \"<double>\",\n  \"ordersProducts\": [\n    {\n      \"productId\": \"<uuid>\",\n      \"quantity\": \"<integer>\"\n    },\n    {\n      \"productId\": \"<uuid>\",\n      \"quantity\": \"<integer>\"\n    }\n  ],\n  \"ordersIngredients\": [\n    {\n      \"productId\": \"<uuid>\",\n      \"quantity\": \"<integer>\"\n    },\n    {\n      \"productId\": \"<uuid>\",\n      \"quantity\": \"<integer>\"\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Order",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Order"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Next Step",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_tech_challenger}}/order/nextStep?orderId=d84b4195-bc52-4211-baec-3d74d2e14ad0",
+							"host": [
+								"{{base_url_tech_challenger}}"
+							],
+							"path": [
+								"order",
+								"nextStep"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": "d84b4195-bc52-4211-baec-3d74d2e14ad0"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Order/NextStep?orderId=<uuid>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Order",
+										"NextStep"
+									],
+									"query": [
+										{
+											"key": "orderId",
+											"value": "<uuid>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get Status Payment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_tech_challenger}}/Order/getStatusPayment?orderId=da7c8e28-f7b8-48b4-b67c-5509a5a68980",
+							"host": [
+								"{{base_url_tech_challenger}}"
+							],
+							"path": [
+								"Order",
+								"getStatusPayment"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": "da7c8e28-f7b8-48b4-b67c-5509a5a68980"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Order/GetStatusPayment?orderId=<uuid>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Order",
+										"GetStatusPayment"
+									],
+									"query": [
+										{
+											"key": "orderId",
+											"value": "<uuid>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get Queue",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_tech_challenger}}/order/getQueue",
+							"host": [
+								"{{base_url_tech_challenger}}"
+							],
+							"path": [
+								"order",
+								"getQueue"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Order/GetQueue",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Order",
+										"GetQueue"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get Queue By Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_tech_challenger}}/order/getOrdersByStatus",
+							"host": [
+								"{{base_url_tech_challenger}}"
+							],
+							"path": [
+								"order",
+								"getOrdersByStatus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://a41e31c7bb4174d859b99b608a0c83c7-1382405691.us-east-1.elb.amazonaws.com/Payment/Receipt?orderId=da7c8e28-f7b8-48b4-b67c-5509a5a68980",
+							"protocol": "http",
+							"host": [
+								"a41e31c7bb4174d859b99b608a0c83c7-1382405691",
+								"us-east-1",
+								"elb",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"Payment",
+								"Receipt"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": "da7c8e28-f7b8-48b4-b67c-5509a5a68980"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Produtos",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Pastel\",\n  \"categoryId\": \"9772126d-efde-4ba0-ac63-3bf17b846467\",\n  \"price\": \"5.00\",\n  \"description\": \"Pastel frito na hora.\",\n  \"imageUrl\": \"\",\n  \"estimative\": \"5\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_tech_challenger}}/product",
+							"host": [
+								"{{base_url_tech_challenger}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"categoryId\": \"<uuid>\",\n  \"price\": \"<double>\",\n  \"description\": \"<string>\",\n  \"imageUrl\": \"<string>\",\n  \"estimative\": \"<integer>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Product",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Product"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"a06096ed-dde2-4312-82dc-72cd931b1b1b\",\n  \"name\": \"Pastel de queijo\",\n  \"categoryId\": \"9772126d-efde-4ba0-ac63-3bf17b846467\",\n  \"price\": \"5.50\",\n  \"description\": \"Pastel de queijo.\",\n  \"imageUrl\": \"\",\n  \"estimative\": \"5\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_tech_challenger}}/product?id=a06096ed-dde2-4312-82dc-72cd931b1b1b",
+							"host": [
+								"{{base_url_tech_challenger}}"
+							],
+							"path": [
+								"product"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "a06096ed-dde2-4312-82dc-72cd931b1b1b"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"categoryId\": \"<uuid>\",\n  \"price\": \"<double>\",\n  \"description\": \"<string>\",\n  \"imageUrl\": \"<string>\",\n  \"estimative\": \"<integer>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Product",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Product"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_tech_challenger}}/product?id=a06096ed-dde2-4312-82dc-72cd931b1b1b",
+							"host": [
+								"{{base_url_tech_challenger}}"
+							],
+							"path": [
+								"product"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "a06096ed-dde2-4312-82dc-72cd931b1b1b"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Product?id=<uuid>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Product"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "<uuid>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get By Category ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_tech_challenger}}/product/getProductsByCategory?id=9772126d-efde-4ba0-ac63-3bf17b846467",
+							"host": [
+								"{{base_url_tech_challenger}}"
+							],
+							"path": [
+								"product",
+								"getProductsByCategory"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "9772126d-efde-4ba0-ac63-3bf17b846467"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Product/GetProductsByCategory?id=<uuid>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Product",
+										"GetProductsByCategory"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "<uuid>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Tags",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_tech_challenger}}/Tags",
+							"host": [
+								"{{base_url_tech_challenger}}"
+							],
+							"path": [
+								"Tags"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Tags",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Tags"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\",\n  \"deleteAt\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"imageUrl\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_tech_challenger}}/Tags",
+							"host": [
+								"{{base_url_tech_challenger}}"
+							],
+							"path": [
+								"Tags"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\",\n  \"deleteAt\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"imageUrl\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Tags",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Tags"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<uuid>",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_tech_challenger}}/Tags",
+							"host": [
+								"{{base_url_tech_challenger}}"
+							],
+							"path": [
+								"Tags"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<uuid>",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Tags",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Tags"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\",\n  \"deleteAt\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"imageUrl\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_tech_challenger}}/Tags",
+							"host": [
+								"{{base_url_tech_challenger}}"
+							],
+							"path": [
+								"Tags"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\",\n  \"deleteAt\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"imageUrl\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Tags",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Tags"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_tech_challenger}}/Users",
+							"host": [
+								"{{base_url_tech_challenger}}"
+							],
+							"path": [
+								"Users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/"
+		}
+	]
+}
